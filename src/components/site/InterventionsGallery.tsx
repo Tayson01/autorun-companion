@@ -4,7 +4,6 @@ import { Camera, ChevronLeft, ChevronRight, ExternalLink, Quote, Star, X } from 
 import f1 from "@/assets/google/foto-1.jpg";
 import f2 from "@/assets/google/foto-2.jpg";
 import f3 from "@/assets/google/foto-3.jpg";
-import f4 from "@/assets/google/foto-4.jpg";
 import f5 from "@/assets/google/foto-5.jpg";
 import f6 from "@/assets/google/foto-6.jpg";
 import f7 from "@/assets/google/foto-7.jpg";
@@ -15,7 +14,7 @@ import a1 from "@/assets/google/avatar-1.png";
 import a2 from "@/assets/google/avatar-2.png";
 import a3 from "@/assets/google/avatar-3.png";
 import a4 from "@/assets/google/avatar-4.png";
-import a5 from "@/assets/google/avatar-5.png";
+import a10 from "@/assets/google/avatar-10.png";
 import a6 from "@/assets/google/avatar-6.png";
 import a7 from "@/assets/google/avatar-7.png";
 import a8 from "@/assets/google/avatar-8.png";
@@ -32,7 +31,6 @@ const owner = { name: "Vulcanizare NonStop", avatar: a9 };
 /** Fotografii preluate de pe profilul Google Maps, cu autorul fiecăreia. */
 const photos = [
   { src: f1, w: 1440, h: 810, author: owner },
-  { src: f4, w: 1200, h: 1600, author: owner },
   { src: f8, w: 4032, h: 3024, author: { name: "El Nicu", avatar: a6 } },
   { src: f2, w: 960, h: 540, author: owner },
   { src: f3, w: 720, h: 960, author: owner },
@@ -49,7 +47,7 @@ const reviews = [
   { name: "Nicolae Balasa", avatar: a2, rating: 5, when: "acum 3 luni", text: "Super preturi...calitate buna!!!", url: "https://www.google.com/maps/contrib/104743814083269855919/reviews" },
   { name: "Georgiana Alexandra Viloaica", avatar: a3, rating: 5, when: "acum 5 luni", text: "Profesioniști!\nRăspund rapid și rezolvă problema imediat!", url: "https://www.google.com/maps/contrib/102515383428966307254/reviews" },
   { name: "A A", avatar: a4, rating: 5, when: "acum 3 ani", text: "Niște băieți de nota 10 lucrează ft rapid și calitativ", url: "https://www.google.com/maps/contrib/108273886275660952522/reviews" },
-  { name: "Daniel Manolache", avatar: a5, rating: 5, when: "acum 6 ani", text: "The Best....", url: "https://www.google.com/maps/contrib/109551062216076336482/reviews" },
+  { name: "Andrei Yt", avatar: a10, rating: 5, when: "acum 3 ani", text: "Top💪🏻", url: "https://www.google.com/maps/contrib/114594447374595946819/reviews" },
 ];
 
 function Stars({ value, className = "size-4" }: { value: number; className?: string }) {
@@ -107,7 +105,6 @@ export function InterventionsGallery() {
   const [open, setOpen] = useState<number | null>(null);
   const move = useCallback((d: number) => setOpen((i) => (i === null ? i : (i + d + photos.length) % photos.length)), []);
   const close = useCallback(() => setOpen(null), []);
-  const dist = [5, 4, 3, 2, 1].map((s) => ({ s, n: reviews.filter((r) => r.rating === s).length }));
 
   return (
     <section id="galerie" className="gallery-section relative overflow-hidden py-16 sm:py-24">
@@ -170,43 +167,53 @@ export function InterventionsGallery() {
         </div>
 
         {/* Recenzii */}
-        <div className="mt-16 grid gap-6 lg:grid-cols-[260px_1fr]">
-          <div className="rounded-3xl border border-border bg-card p-6 shadow-card">
-            <p className="text-sm font-bold">Ce spun clienții</p>
-            <ul className="mt-4 space-y-2">
-              {dist.map(({ s, n }) => (
-                <li key={s} className="flex items-center gap-2 text-xs">
-                  <span className="w-3 font-bold tabular-nums">{s}</span>
-                  <Star className="size-3 fill-star text-star" />
-                  <span className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
-                    <span className="block h-full rounded-full bg-star" style={{ width: `${(n / reviews.length) * 100}%` }} />
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <a href={GOOGLE_URL} target="_blank" rel="noreferrer" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-3 text-sm font-bold text-brand-foreground shadow-glow transition-transform active:scale-[0.98]">
+        <div className="mt-16">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand">
+                <GoogleMark className="size-4" /> Recenzii verificate
+              </p>
+              <h3 className="mt-2 text-2xl font-black sm:text-3xl">Ce spun clienții noștri</h3>
+            </div>
+            <a href={GOOGLE_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-bold text-brand-foreground shadow-glow transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
               <Star className="size-4 fill-current" /> Lasă o recenzie
             </a>
           </div>
 
-          <div className="gallery-reviews -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:px-0">
-            {reviews.map((r) => (
-              <article key={r.name} className="relative flex w-[85%] shrink-0 snap-start flex-col rounded-3xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-float sm:w-[340px]">
-                <Quote className="absolute right-5 top-5 size-8 text-brand/15" />
-                <div className="flex items-center gap-3">
-                  <img src={r.avatar} alt={r.name} width={48} height={48} loading="lazy" className="size-12 rounded-full object-cover ring-2 ring-brand/20" />
-                  <div className="min-w-0">
-                    <p className="truncate font-bold capitalize">{r.name}</p>
-                    <p className="text-xs text-muted-foreground">{r.when}</p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {reviews.map((r, i) => {
+              const featured = i === 0;
+              return (
+                <article
+                  key={r.name}
+                  className={`group relative flex flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-float ${
+                    featured
+                      ? "border-brand bg-brand text-brand-foreground shadow-glow md:col-span-2 lg:col-span-1 lg:row-span-2"
+                      : "border-border bg-card shadow-card hover:border-brand/40"
+                  }`}
+                >
+                  <Quote className={`absolute -right-2 -top-2 size-24 transition-transform duration-500 group-hover:rotate-12 ${featured ? "text-brand-foreground/15" : "text-brand/10"}`} />
+                  <div className="relative flex items-center gap-3">
+                    <img src={r.avatar} alt={r.name} width={48} height={48} loading="lazy" className={`size-12 rounded-full object-cover ring-2 ${featured ? "ring-brand-foreground/60" : "ring-brand/20"}`} />
+                    <div className="min-w-0">
+                      <p className="truncate font-bold capitalize">{r.name}</p>
+                      <p className={`text-xs ${featured ? "text-brand-foreground/75" : "text-muted-foreground"}`}>{r.when}</p>
+                    </div>
                   </div>
-                </div>
-                <Stars value={r.rating} className="mt-4 size-4" />
-                <p className="mt-3 flex-1 whitespace-pre-line leading-relaxed">{r.text}</p>
-                <a href={r.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground">
-                  <GoogleMark className="size-3.5" /> Publicat pe Google
-                </a>
-              </article>
-            ))}
+                  <span className="relative mt-4 inline-flex gap-0.5" aria-label={`${r.rating} din 5 stele`}>
+                    {[1, 2, 3, 4, 5].map((s) => (
+                      <Star key={s} className="size-4 fill-star text-star" />
+                    ))}
+                  </span>
+                  <p className={`relative mt-3 flex-1 whitespace-pre-line leading-relaxed ${featured ? "text-2xl font-black sm:text-3xl" : "text-lg font-semibold"}`}>
+                    „{r.text}”
+                  </p>
+                  <a href={r.url} target="_blank" rel="noreferrer" className={`relative mt-5 inline-flex items-center gap-1.5 text-xs font-semibold ${featured ? "text-brand-foreground/80 hover:text-brand-foreground" : "text-muted-foreground hover:text-foreground"}`}>
+                    <GoogleMark className="size-3.5" /> Publicat pe Google
+                  </a>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
