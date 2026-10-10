@@ -116,7 +116,6 @@ function AnvelopeSH() {
       <section className="relative isolate overflow-hidden bg-foreground text-background">
         <img src={photos[0]!.src} alt="" aria-hidden className="vm-kenburns absolute inset-0 -z-10 h-full w-full object-cover opacity-45" />
         <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/30 lg:bg-gradient-to-r lg:from-foreground lg:via-foreground/80 lg:to-foreground/10" />
-        <div aria-hidden className="vm-tread absolute inset-y-0 right-0 -z-10 hidden w-24 opacity-20 lg:block" />
         <div aria-hidden className="pointer-events-none absolute -left-32 bottom-0 -z-10 size-[420px] rounded-full bg-brand/30 blur-3xl" />
 
         <div className="mx-auto flex min-h-[78svh] max-w-6xl flex-col justify-end px-5 pb-10 pt-16 sm:min-h-[620px] lg:justify-center lg:pb-16">
@@ -367,7 +366,7 @@ function AnvelopeSH() {
               key={p.alt}
               type="button"
               onClick={() => setLightbox(i)}
-              className={`group relative aspect-[4/5] w-[70%] shrink-0 snap-center overflow-hidden rounded-3xl md:aspect-auto md:w-auto ${["md:col-span-2 md:row-span-2", "", "", "md:col-span-2", "", ""][i]}`}
+              className={`group relative aspect-[4/5] w-[70%] shrink-0 snap-center overflow-hidden rounded-3xl md:aspect-auto md:w-auto ${["md:col-span-2 md:row-span-2", "", "", "md:col-span-2", "md:col-span-2", "md:col-span-2"][i]}`}
             >
               <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </button>
