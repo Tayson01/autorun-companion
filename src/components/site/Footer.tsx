@@ -8,7 +8,7 @@ import { COMPANY, PHONE, TEL, ADDRESS, WA, services, zones } from "@/lib/site-da
 export function Footer() {
   return (
     <>
-      <footer className="border-t border-border bg-surface">
+      <footer className="border-t border-border bg-surface pb-20 lg:pb-0">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link to="/" aria-label="Vulcanizare Dragodana"><img src={logo} alt="Vulcanizare Dragodana" width={1280} height={340} className="h-auto w-56 dark:hidden" /><img src={logoDark} alt="Vulcanizare Dragodana" width={1280} height={340} className="h-auto w-56 hidden dark:block" /></Link>
@@ -91,7 +91,6 @@ export function Footer() {
       >
         <MessageCircle className="size-6" />
       </a>
-      <div className="h-24 lg:hidden" />
     </>
   );
 }
