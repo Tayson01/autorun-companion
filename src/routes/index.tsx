@@ -152,58 +152,68 @@ function Index() {
       <UsedTiresTeaser />
 
       {/* Bară urgență */}
-      <section className="bg-foreground px-5 py-10 text-background sm:py-14">
-        <div className="relative mx-auto max-w-6xl">
-          <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-xl">
-              <span className="inline-flex items-center gap-2 rounded-full bg-background/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
-                <span className="relative flex size-2">
-                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
-                  <span className="relative inline-flex size-2 rounded-full bg-success" />
-                </span>
-                Deschis acum · Non-stop 24/24
+      <section className="relative overflow-hidden px-5 py-12 sm:py-20">
+        <div aria-hidden className="pointer-events-none absolute -left-24 top-10 size-72 rounded-full bg-brand/10 blur-3xl" />
+        <div className="relative mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16">
+          <div>
+            <span className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-brand">
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
+                <span className="relative inline-flex size-2 rounded-full bg-success" />
               </span>
-              <p className="mt-3 text-xl font-extrabold leading-tight sm:text-2xl">
-                Ai pană acum? <span className="text-brand">Suntem aici.</span>
-              </p>
-              <p className="mt-2 text-sm text-background/70">
-                Vino oricând la atelier pe Calea Găești 45, Dragodana, sau trimite locația pe WhatsApp și pornim spre tine.
-              </p>
-            </div>
-            <div className="grid grid-cols-[1.5fr_1fr] gap-2 sm:flex sm:gap-3">
-              <Btn href={`tel:${TEL}`} className="vm-callfx vm-callcta justify-center whitespace-nowrap px-3">
-                <Phone className="size-4" /> <span className="tabular-nums">{PHONE}</span>
-              </Btn>
-              <a
-                href={WA}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-background/20 bg-background/10 px-4 py-3 text-sm font-semibold transition hover:bg-background/20"
-              >
-                <MessageCircle className="size-4" /> WhatsApp
-              </a>
-            </div>
+              Deschis acum · Non-stop
+            </span>
+            <h2 className="mt-4 text-[2.4rem] font-black leading-[0.95] tracking-tight sm:text-6xl">
+              Ai pană acum?
+              <span className="mt-1 block text-brand">Suntem aici.</span>
+            </h2>
+            <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted-foreground">
+              Vino oricând la atelier pe Calea Găești 45, Dragodana, sau trimite locația pe WhatsApp și pornim spre tine.
+            </p>
+
+            <a href={`tel:${TEL}`} className="group mt-7 flex items-center gap-4">
+              <span className="vm-callfx flex size-14 shrink-0 items-center justify-center rounded-full bg-brand text-brand-foreground shadow-glow transition-transform group-hover:scale-105 sm:size-16">
+                <Phone className="size-6 transition-transform group-hover:rotate-12" />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-[11px] font-bold uppercase tracking-widest text-muted-foreground">Sună direct</span>
+                <span className="block text-[1.9rem] font-black leading-none tracking-tight tabular-nums transition-colors group-hover:text-brand sm:text-5xl">
+                  {PHONE}
+                </span>
+              </span>
+            </a>
+            <a
+              href={WA}
+              className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-foreground underline decoration-brand decoration-2 underline-offset-[6px] transition hover:text-brand"
+            >
+              <MessageCircle className="size-4 text-brand" /> Trimite locația pe WhatsApp →
+            </a>
           </div>
-          <div className="relative mt-6 border-t border-background/10 pt-5">
-            <p className="mb-3 text-[11px] font-bold uppercase tracking-wider text-background/50">Timp estimat de sosire</p>
-            <div className="grid grid-cols-2 gap-2 lg:grid-cols-4 sm:gap-3">
-              {zones.slice(0, 4).map((z) => (
-                <Link
-                  key={z.slug}
-                  to="/zone/$slug"
-                  params={{ slug: z.slug }}
-                  className="group flex items-center justify-between gap-2 rounded-2xl bg-background/5 p-3 ring-1 ring-background/10 transition hover:bg-background/10 hover:ring-brand/60"
-                >
-                  <span className="min-w-0">
-                    <span className="flex items-start gap-1.5 text-sm font-semibold leading-snug">
-                      <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand" /> {z.short}
+
+          <div>
+            <p className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+              <Clock className="size-3.5 text-brand" /> Timp estimat de sosire
+            </p>
+            <ul className="mt-3">
+              {zones.slice(0, 4).map((z, i) => (
+                <li key={z.slug} className="border-b border-border">
+                  <Link
+                    to="/zone/$slug"
+                    params={{ slug: z.slug }}
+                    className="group flex items-center gap-4 py-4 sm:py-5"
+                  >
+                    <span className="w-6 shrink-0 text-xs font-black tabular-nums text-brand/60">0{i + 1}</span>
+                    <span className="min-w-0 flex-1 text-base font-extrabold leading-tight transition-colors group-hover:text-brand sm:text-lg">
+                      {z.short}
                     </span>
-                    <span className="mt-1 flex items-center gap-1 text-xs text-background/60">
-                      <Clock className="size-3" /> {z.eta.replace("Sosire ", "")}
+                    <span className="shrink-0 text-sm font-black tabular-nums text-brand sm:text-base">
+                      {z.eta.replace("Sosire ", "")}
                     </span>
-                  </span>
-                  <ChevronRight className="size-4 shrink-0 text-background/40 transition group-hover:translate-x-0.5 group-hover:text-brand" />
-                </Link>
+                    <ChevronRight className="size-4 shrink-0 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-brand" />
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </section>
