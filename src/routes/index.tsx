@@ -88,14 +88,26 @@ function Index() {
 
               <h1 className="mt-4 text-[2.1rem] font-black leading-[1.06] sm:text-5xl md:leading-[1.02]">
                 Vulcanizare <span className="text-brand">Dragodana</span>
-                <span className="vm-badge-glow mt-4 inline-flex items-center gap-2 rounded-xl bg-brand px-3.5 py-1.5 text-lg font-black tracking-wide text-brand-foreground sm:text-2xl">
-                  NON-STOP <span className="vm-blink tabular-nums">24/24</span>
+                <span className="mt-3 flex items-center gap-3">
+                  <span className="vm-text-sweep text-[4.2rem] font-black leading-[0.85] tracking-tighter tabular-nums sm:text-8xl">24/24</span>
+                  <span className="flex flex-col border-l-2 border-brand pl-3 text-xs font-black uppercase leading-tight tracking-[0.18em] text-foreground sm:text-sm">
+                    <span>Non-stop</span>
+                    <span className="text-muted-foreground">7 din 7</span>
+                    <span className="mt-1 flex items-center gap-1.5 text-success">
+                      <span className="relative flex size-2">
+                        <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
+                        <span className="relative inline-flex size-2 rounded-full bg-success" />
+                      </span>
+                      Deschis
+                    </span>
+                  </span>
                 </span>
               </h1>
 
               <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-                Vulcanizare deschisă non-stop în Dragodana — zi și noapte, weekend și sărbători, pe Calea Găești 45. Vino la noi oricând sau venim noi la tine:
-                Găești, Târgoviște, Titu, A1 și până la 100 km.
+                Zi și noapte, weekend și sărbători, pe Calea Găești 45.{" "}
+                <span className="hidden sm:inline">Vino la noi oricând sau venim noi la tine: Găești, Târgoviște, Titu, A1 și până la 100 km.</span>
+                <span className="sm:hidden">Venim la tine până la 100 km.</span>
               </p>
 
               <div className="mt-5 grid gap-2.5 sm:mt-8 sm:flex sm:flex-wrap sm:gap-3">
