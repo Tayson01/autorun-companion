@@ -3,10 +3,10 @@ export const TEL = "+40729847830";
 export const WA_NUMBER = "40729847830";
 export const WA =
   "https://wa.me/40729847830?text=Bun%C4%83%20ziua!%20Am%20nevoie%20de%20vulcanizare%20mobil%C4%83%20%C3%AEn%20Constan%C8%9Ba.";
-export const MAPS = "https://www.google.com/maps/search/?api=1&query=Calea+G%C4%83e%C8%99ti+45+Dragodana";
+export const MAPS = "https://maps.app.goo.gl/i5PAv56cqGkRsLGX8";
 export const REVIEWS = MAPS;
 
-export const BASE: [number, number] = [44.6867, 25.7553];
+export const BASE: [number, number] = [44.7307159, 25.3662932];
 
 export type Service = {
   slug: string;
@@ -202,89 +202,102 @@ export type Zone = {
 
 export const zones: Zone[] = [
   {
-    slug: "constanta",
-    name: "Constanța",
-    short: "Constanța oraș",
-    eta: "Sosire ~10–20 min",
-    etaMinutes: "10–20 min",
-    coords: [44.1733, 28.6383],
-    desc: "Tot orașul, inclusiv Tomis Nord, Faleză, Km 4-5 și zona port.",
+    slug: "dragodana-gaesti",
+    name: "Dragodana & Găești",
+    short: "Dragodana / Găești",
+    eta: "Sosire ~5–15 min",
+    etaMinutes: "5–15 min",
+    coords: [44.7186, 25.3194],
+    desc: "Baza noastră e aici — ajungem cel mai repede.",
     intro:
-      "Baza noastră este pe Calea Găești, Nr. 45, Dragodana, așa că acoperim tot orașul rapid: Tomis Nord, Tomis III, Faleză Nord, Km 4-5, Coiciu, Palas, Inel II și zona Portului.",
-    roads: ["Bd. Mamaia", "Bd. Aurel Vlaicu", "Șos. Mangaliei", "Bd. 1 Mai", "Centura Constanța"],
-    localities: ["Tomis Nord", "Faleză Nord", "Km 4-5", "Coiciu", "Palas", "Zona Port"],
+      "Baza noastră este pe Calea Găești, Nr. 45, Dragodana. Acoperim rapid Dragodana, Găești, Picior de Munte, Boteni și satele din jur, pe DN7 și DN61.",
+    roads: ["DN7", "DN61", "Calea Găești"],
+    localities: ["Dragodana", "Găești", "Picior de Munte", "Boteni", "Cucuteni", "Mătăsaru"],
   },
   {
-    slug: "mamaia-navodari",
-    name: "Mamaia & Năvodari",
-    short: "Mamaia / Năvodari",
-    eta: "Sosire ~15–30 min",
-    etaMinutes: "15–30 min",
-    coords: [44.2745, 28.6197],
-    desc: "Intervenții rapide pe litoral, inclusiv în sezon estival.",
-    intro:
-      "Vara traficul pe litoral e greu, dar cunoaștem rutele ocolitoare. Intervenim în Mamaia, Mamaia Nord, Năvodari și Corbu, la hotel, în parcare sau pe drum.",
-    roads: ["DN24", "Bd. Mamaia", "DJ226", "Pasaj Butelii"],
-    localities: ["Mamaia", "Mamaia Nord", "Năvodari", "Corbu", "Lumina"],
-  },
-  {
-    slug: "agigea-a4",
-    name: "Agigea & Autostrada A4",
-    short: "A2 / A4 — nod Agigea",
-    eta: "Sosire ~15–35 min",
-    etaMinutes: "15–35 min",
-    coords: [44.0913, 28.6395],
-    desc: "Pene pe autostradă și pe centura Constanța, non-stop.",
-    intro:
-      "Pe autostradă intervenim cu semnalizare completă, în siguranță. Acoperim nodul Agigea, tronsonul A4 și intrarea pe A2 spre București, inclusiv zona Podului Agigea.",
-    roads: ["A4", "A2", "DN39", "Pod Agigea"],
-    localities: ["Agigea", "Nod A4", "Lazu", "Cumpăna"],
-  },
-  {
-    slug: "ovidiu-lumina",
-    name: "Ovidiu & Lumina",
-    short: "Ovidiu / Lumina",
+    slug: "targoviste",
+    name: "Târgoviște",
+    short: "Târgoviște",
     eta: "Sosire ~20–35 min",
     etaMinutes: "20–35 min",
-    coords: [44.2694, 28.5589],
-    desc: "Montaj la domiciliu și reparații pe loc în zona limitrofă.",
+    coords: [44.9254, 25.4567],
+    desc: "Reședința județului și împrejurimile, non-stop.",
     intro:
-      "Zona Ovidiu, Lumina, Poiana și Mihail Kogălniceanu este acoperită zilnic, inclusiv pentru montaj sezonier programat la domiciliu.",
-    roads: ["DN2A", "A4", "DJ226"],
-    localities: ["Ovidiu", "Lumina", "Poiana", "Mihail Kogălniceanu"],
+      "Venim în tot orașul Târgoviște și în comunele din jur: Răzvad, Ulmi, Aninoasa, Șotânga și Doicești, pentru reparații pe loc și montaj la domiciliu.",
+    roads: ["DN71", "DN72", "Centura Târgoviște"],
+    localities: ["Târgoviște", "Răzvad", "Ulmi", "Aninoasa", "Doicești"],
   },
   {
-    slug: "eforie-techirghiol",
-    name: "Eforie & Techirghiol",
-    short: "Eforie / Techirghiol",
+    slug: "titu",
+    name: "Titu & DN7",
+    short: "Titu / DN7",
+    eta: "Sosire ~20–30 min",
+    etaMinutes: "20–30 min",
+    coords: [44.6622, 25.5742],
+    desc: "Intervenții pe DN7 și în zona Titu.",
+    intro:
+      "Acoperim orașul Titu și tronsonul DN7 spre București, inclusiv Ghimpați, Odobești și Potlogi.",
+    roads: ["DN7", "DN71", "DJ711"],
+    localities: ["Titu", "Odobești", "Potlogi", "Ghimpați", "Corbii Mari"],
+  },
+  {
+    slug: "autostrada-a1",
+    name: "Autostrada A1",
+    short: "Autostrada A1",
     eta: "Sosire ~25–45 min",
     etaMinutes: "25–45 min",
-    coords: [44.0499, 28.6353],
-    desc: "Deplasare pe DN39 pentru autoturisme și utilitare.",
+    coords: [44.62, 25.42],
+    desc: "Pene pe autostrada A1 București–Pitești, non-stop.",
     intro:
-      "Coborâm pe DN39 spre Eforie Nord, Eforie Sud, Techirghiol și Costinești pentru reparații pe loc și montaj la domiciliu.",
-    roads: ["DN39", "DJ391", "A4"],
-    localities: ["Eforie Nord", "Eforie Sud", "Techirghiol", "Costinești", "Tuzla"],
+      "Pe autostradă intervenim cu semnalizare completă, în siguranță. Acoperim tot tronsonul A1 dintre București și Pitești, inclusiv nodurile Ciolpani și Găești.",
+    roads: ["A1", "DN7", "DN65B"],
+    localities: ["Nod Găești", "Ciolpani", "Ungheni", "Bolintin"],
   },
   {
-    slug: "mangalia-sud",
-    name: "Mangalia & sudul litoralului",
-    short: "Mangalia & sud",
-    eta: "Sosire ~35–55 min",
-    etaMinutes: "35–55 min",
-    coords: [43.8167, 28.5833],
-    desc: "Deservim și sudul litoralului, la cerere, cu programare.",
+    slug: "pitesti",
+    name: "Pitești",
+    short: "Pitești",
+    eta: "Sosire ~40–60 min",
+    etaMinutes: "40–60 min",
+    coords: [44.8565, 24.8692],
+    desc: "Pitești și zona Ștefănești, cu confirmare telefonică.",
     intro:
-      "Pentru Mangalia, Olimp, Neptun, Jupiter, Venus și 2 Mai venim la cerere, de regulă cu o scurtă confirmare telefonică pentru dimensiunea anvelopei.",
-    roads: ["DN39", "DJ391"],
-    localities: ["Mangalia", "Olimp", "Neptun", "Venus", "2 Mai", "Vama Veche"],
+      "Mergem la Pitești, Ștefănești, Bradu și Mioveni pentru pene, schimb de anvelope și asistență pe drum.",
+    roads: ["A1", "DN7", "DN65"],
+    localities: ["Pitești", "Ștefănești", "Bradu", "Mioveni"],
+  },
+  {
+    slug: "bucuresti-vest",
+    name: "București & vestul Ilfovului",
+    short: "București vest",
+    eta: "Sosire ~50–80 min",
+    etaMinutes: "50–80 min",
+    coords: [44.4352, 26.0225],
+    desc: "Asistență până în vestul Bucureștiului, la cerere.",
+    intro:
+      "Pentru vestul Bucureștiului, Chiajna, Domnești și Bragadiru venim la cerere, de regulă cu o confirmare telefonică pentru dimensiunea anvelopei.",
+    roads: ["A1", "DN7", "Centura București"],
+    localities: ["Militari", "Chiajna", "Domnești", "Bragadiru", "Roșu"],
+  },
+  {
+    slug: "ploiesti",
+    name: "Ploiești",
+    short: "Ploiești",
+    eta: "Sosire ~60–90 min",
+    etaMinutes: "60–90 min",
+    coords: [44.9419, 26.0225],
+    desc: "Deplasare la cerere, inclusiv camioane și flote.",
+    intro:
+      "Mergem la Ploiești și în zona Prahovei la cerere, pentru autoturisme, utilitare și camioane.",
+    roads: ["DN72", "DN1", "A3"],
+    localities: ["Ploiești", "Blejoi", "Bărcănești", "Târgșoru Vechi"],
   },
 ];
 
 export const mapRings = [
-  { minutes: "15 min", km: 15, radius: 15000 },
-  { minutes: "30 min", km: 30, radius: 30000 },
-  { minutes: "45 min", km: 50, radius: 50000 },
+  { minutes: "30 min", km: 25, radius: 25000 },
+  { minutes: "60 min", km: 50, radius: 50000 },
+  { minutes: "90 min", km: 100, radius: 100000 },
 ];
 
 export function waLink(text: string) {

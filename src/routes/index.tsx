@@ -109,7 +109,7 @@ function Index() {
               <dl className="mt-5 grid max-w-xl grid-cols-3 gap-2 sm:mt-10 sm:gap-3">
                 {[
                   { icon: Clock, k: "< 20 min", v: "timp de răspuns" },
-                  { icon: MapPin, k: "40 km", v: "rază acoperire" },
+                  { icon: MapPin, k: "100 km", v: "rază acoperire" },
                   { icon: ShieldCheck, k: "Garanție", v: "la fiecare lucrare" },
                 ].map((s) => (
                   <div

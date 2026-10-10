@@ -420,7 +420,7 @@ export default function CoverageMap() {
       <div className="relative h-full w-full overflow-hidden sm:rounded-2xl">
         <MapContainer
           center={BASE}
-          zoom={9}
+          zoom={8}
           minZoom={6}
           maxZoom={18}
           scrollWheelZoom={false}
