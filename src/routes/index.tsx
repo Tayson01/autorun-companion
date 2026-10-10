@@ -171,8 +171,8 @@ function Index() {
                 Vino oricând la atelier pe Calea Găești 45, Dragodana, sau trimite locația pe WhatsApp și pornim spre tine.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
-              <Btn href={`tel:${TEL}`} className="vm-callfx vm-callcta justify-center">
+            <div className="grid grid-cols-[1.5fr_1fr] gap-2 sm:flex sm:gap-3">
+              <Btn href={`tel:${TEL}`} className="vm-callfx vm-callcta justify-center whitespace-nowrap px-3">
                 <Phone className="size-4" /> <span className="tabular-nums">{PHONE}</span>
               </Btn>
               <a
@@ -194,8 +194,8 @@ function Index() {
                   className="group flex items-center justify-between gap-2 rounded-2xl bg-background/5 p-3 ring-1 ring-background/10 transition hover:bg-background/10 hover:ring-brand/60"
                 >
                   <span className="min-w-0">
-                    <span className="flex items-center gap-1.5 truncate text-sm font-semibold">
-                      <MapPin className="size-3.5 shrink-0 text-brand" /> {z.short}
+                    <span className="flex items-start gap-1.5 text-sm font-semibold leading-snug">
+                      <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand" /> {z.short}
                     </span>
                     <span className="mt-1 flex items-center gap-1 text-xs text-background/60">
                       <Clock className="size-3" /> {z.eta.replace("Sosire ", "")}
