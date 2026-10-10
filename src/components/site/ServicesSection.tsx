@@ -25,7 +25,6 @@ type Category = "all" | "atelier" | "urgente" | "montaj" | "camioane";
 
 const categories: { id: Category; label: string }[] = [
   { id: "all", label: "Toate" },
-  { id: "atelier", label: "În atelier" },
   { id: "urgente", label: "Urgențe pe drum" },
   { id: "montaj", label: "Montaj & întreținere" },
   { id: "camioane", label: "Camioane & flote" },
@@ -65,7 +64,7 @@ export function ServicesSection() {
     [active, atelier.slug, mobile.slug],
   );
 
-  const showAtelier = active === "all" || active === "atelier";
+  const showAtelier = false;
   const showMobile = active === "all" || active === "urgente";
 
   return (
@@ -125,58 +124,6 @@ export function ServicesSection() {
         {/* Two pillars */}
         {(showAtelier || showMobile) && (
           <div className={`mt-6 grid gap-5 ${showAtelier && showMobile ? "lg:grid-cols-2" : ""}`}>
-            {showAtelier && (
-              <article className="group relative overflow-hidden rounded-[28px] bg-brand p-7 text-brand-foreground shadow-card sm:p-9">
-                <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-brand-foreground/10 blur-2xl" />
-                <div aria-hidden className="pointer-events-none absolute -bottom-24 -left-10 size-64 rounded-full bg-brand-foreground/10 blur-3xl" />
-                <div className="relative flex items-start justify-between gap-4">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-foreground/15 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide">
-                    <Building2 className="size-3.5" /> În atelier · non-stop
-                  </span>
-                  <span className="flex size-12 items-center justify-center rounded-2xl bg-brand-foreground text-brand">
-                    <ServiceIcon name={atelier.icon} className="size-6" />
-                  </span>
-                </div>
-                <h3 className="relative mt-6 text-3xl font-black tracking-tight sm:text-4xl">{atelier.title}</h3>
-                <p className="relative mt-3 max-w-lg text-sm leading-relaxed opacity-90">{atelier.intro}</p>
-
-                <div className="relative mt-6 flex items-end gap-3">
-                  <p className="text-6xl font-black leading-none tracking-tighter sm:text-7xl">40</p>
-                  <div className="pb-1">
-                    <p className="text-xl font-black leading-none">lei</p>
-                    <p className="mt-1 text-xs opacity-85">schimb + echilibrare · 4 roți</p>
-                  </div>
-                </div>
-
-                <ul className="relative mt-6 grid gap-2 sm:grid-cols-2">
-                  {atelier.bullets.slice(0, 4).map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm">
-                      <Check className="mt-0.5 size-4 shrink-0" />
-                      <span className="leading-snug">{b}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="relative mt-7 flex flex-wrap gap-3">
-                  <a
-                    href={MAPS}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl bg-brand-foreground px-5 py-3 text-sm font-bold text-brand transition-transform hover:-translate-y-0.5"
-                  >
-                    <MapPin className="size-4" /> {ADDRESS}
-                  </a>
-                  <Link
-                    to="/servicii/$slug"
-                    params={{ slug: atelier.slug }}
-                    className="inline-flex items-center gap-2 rounded-xl border border-brand-foreground/30 px-5 py-3 text-sm font-semibold transition-colors hover:bg-brand-foreground/10"
-                  >
-                    Detalii <ArrowRight className="size-4" />
-                  </Link>
-                </div>
-              </article>
-            )}
-
             {showMobile && (
               <article className="group relative overflow-hidden rounded-[28px] border border-border bg-card p-7 shadow-card sm:p-9">
                 <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 size-80 rounded-full bg-brand/10 blur-3xl transition-opacity group-hover:opacity-70" />
