@@ -214,6 +214,15 @@ function Index() {
                 </li>
               ))}
             </ul>
+            <a
+              href="#harta"
+              className="group mt-5 flex items-center justify-between gap-3 rounded-2xl bg-brand-soft px-4 py-3.5 text-sm font-black text-brand transition hover:bg-brand hover:text-brand-foreground"
+            >
+              <span className="flex items-center gap-2">
+                <MapPin className="size-4" /> Vezi toate zonele pe hartă
+              </span>
+              <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </a>
           </div>
         </div>
       </section>
