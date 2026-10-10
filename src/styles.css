@@ -798,6 +798,6 @@
 .vm-stat { position: relative; overflow: hidden; }
 .vm-stat::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; pointer-events: none; opacity: 0; transition: opacity .35s;
   background: linear-gradient(135deg, var(--brand), transparent 60%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; -webkit-mask-composite: xor; }
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; }
 .vm-stat:hover::before { opacity: 1; }
 .vm-float { animation: vm-float 3s ease-in-out infinite; }
