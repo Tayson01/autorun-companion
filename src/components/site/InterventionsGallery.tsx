@@ -63,7 +63,7 @@ function Stars({ value, className = "size-4" }: { value: number; className?: str
 }
 
 function Lightbox({ index, onClose, onMove }: { index: number; onClose: () => void; onMove: (d: number) => void }) {
-  const p = photos[index];
+  const p = photos[index] ?? photos[0]!;
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
