@@ -6,6 +6,8 @@ import {
   MessageCircle,
   Phone,
   ShieldCheck,
+  Truck,
+  Wrench,
 } from "lucide-react";
 
 import { Btn, BtnLink } from "@/components/site/ui";
@@ -113,35 +115,33 @@ function Index() {
                 </div>
               </div>
 
-              <dl className="mt-5 grid max-w-xl grid-cols-3 gap-2 sm:mt-10 sm:gap-3">
+              <ul className="mt-6 max-w-xl divide-y divide-border border-y border-border sm:mt-10">
                 {[
-                  { icon: Clock, k: "24/24", v: "deschis non-stop", live: true },
-                  { icon: MapPin, k: "100 km", v: "rază acoperire" },
-                  { icon: ShieldCheck, k: "7 din 7", v: "inclusiv sărbători" },
+                  { icon: Wrench, k: "La atelier", v: "Non-stop, fără programare · Calea Găești 45" },
+                  { icon: Truck, k: "La tine", v: "Echipă mobilă pe DN7, A1 și până la 100 km" },
                 ].map((s, i) => (
-                  <div
+                  <li
                     key={s.k}
                     style={{ animationDelay: `${i * 120}ms` }}
-                    className="vm-stat group animate-rise rounded-2xl border border-border bg-card/80 p-3 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-float sm:p-4"
+                    className="group animate-rise flex items-center gap-3.5 py-3.5 sm:gap-4 sm:py-4"
                   >
-                    <div aria-hidden className="pointer-events-none absolute -right-8 -top-8 size-20 rounded-full bg-brand/10 blur-xl transition-all duration-500 group-hover:scale-150 group-hover:bg-brand/20" />
-                    <div className="relative flex items-center justify-between">
-                      <span className="flex size-8 items-center justify-center rounded-xl bg-brand-soft text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-brand-foreground group-hover:rotate-6">
-                        <s.icon className="size-4" />
-                      </span>
-                      {s.live && (
-                        <span className="relative flex size-2">
-                          <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-70" />
-                          <span className="relative inline-flex size-2 rounded-full bg-success" />
-                        </span>
-                      )}
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand transition-colors group-hover:bg-brand group-hover:text-brand-foreground">
+                      <s.icon className="size-5" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-[15px] font-black leading-tight sm:text-base">{s.k}</div>
+                      <div className="mt-0.5 text-[13px] leading-snug text-muted-foreground sm:text-sm">{s.v}</div>
                     </div>
-                    <dt className="relative mt-3 text-base font-black leading-none tracking-tight sm:text-xl">{s.k}</dt>
-                    <dd className="relative mt-1.5 text-[11px] leading-snug text-muted-foreground sm:text-xs">{s.v}</dd>
-                    <span aria-hidden className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform duration-500 group-hover:scale-x-100" />
-                  </div>
+                    <span className="flex shrink-0 items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-success">
+                      <span className="relative flex size-2">
+                        <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-70" />
+                        <span className="relative inline-flex size-2 rounded-full bg-success" />
+                      </span>
+                      Activ
+                    </span>
+                  </li>
                 ))}
-              </dl>
+              </ul>
 
             </div>
           </div>
