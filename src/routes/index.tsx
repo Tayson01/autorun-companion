@@ -88,18 +88,8 @@ function Index() {
 
               <h1 className="mt-4 text-[2.1rem] font-black leading-[1.06] sm:text-5xl md:leading-[1.02]">
                 Vulcanizare <span className="text-brand">Dragodana</span>
-                <span className="mt-3 flex items-center gap-2.5 text-[1.35rem] font-black tracking-tight sm:text-3xl">
-                  <svg viewBox="0 0 24 24" className="size-7 shrink-0 text-brand sm:size-9" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden>
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="12" x2="12" y2="7.5" className="vm-hand-slow" />
-                    <line x1="12" y1="12" x2="12" y2="5" className="vm-hand-fast" strokeWidth="1.8" />
-                    <circle cx="12" cy="12" r="1.2" fill="currentColor" />
-                  </svg>
-                  <span className="vm-text-sweep">NON-STOP 24/24</span>
-                  <span className="relative ml-1 flex size-2.5">
-                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-70" />
-                    <span className="relative inline-flex size-2.5 rounded-full bg-success" />
-                  </span>
+                <span className="vm-badge-glow mt-4 inline-flex items-center gap-2 rounded-xl bg-brand px-3.5 py-1.5 text-lg font-black tracking-wide text-brand-foreground sm:text-2xl">
+                  NON-STOP <span className="vm-blink tabular-nums">24/24</span>
                 </span>
               </h1>
 

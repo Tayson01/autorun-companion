@@ -836,3 +836,9 @@
 .vm-hand-fast { transform-origin: 12px 12px; animation: vm-hand 2s linear infinite; }
 .vm-hand-slow { transform-origin: 12px 12px; animation: vm-hand 24s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .vm-text-sweep, .vm-hand-fast, .vm-hand-slow { animation: none; } }
+
+@keyframes vm-badge-glow { 0%,100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-brand) 50%, transparent); } 50% { box-shadow: 0 0 0 10px transparent; } }
+.vm-badge-glow { animation: vm-badge-glow 2.4s ease-out infinite; }
+@keyframes vm-blink { 0%,90%,100% { opacity: 1; } 95% { opacity: .35; } }
+.vm-blink { animation: vm-blink 3s steps(1) infinite; }
+@media (prefers-reduced-motion: reduce) { .vm-badge-glow, .vm-blink { animation: none; } }
