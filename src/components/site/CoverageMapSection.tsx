@@ -32,7 +32,7 @@ export function CoverageMapSection() {
             Cât de repede ajungem la tine?
           </h2>
           <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-muted-foreground sm:mt-4 sm:text-base">
-            Pornim din Constanța și acoperim întreg județul, litoralul și tronsoanele A2 / A4. Cercurile
+            Pornim din Dragodana și acoperim o rază de 100 km: Dâmbovița, Argeș, Prahova, București și autostrada A1. Cercurile
             arată timpul estimat de sosire.
           </p>
         </div>
@@ -113,7 +113,7 @@ export function CoverageMapSection() {
               <a href={`tel:${TEL}`} className="font-semibold text-brand tabular-nums underline-offset-4 hover:underline">
                 Sună-ne la {PHONE}
               </a>
-              , deservim întreg județul Constanța.
+              , deservim o rază de 100 km în jurul Dragodanei.
             </p>
           </div>
         </div>

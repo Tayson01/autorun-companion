@@ -34,7 +34,7 @@ function ZonePage() {
       <div className="mx-auto max-w-6xl px-5 pt-14">
         <SectionLabel>Zone deservite</SectionLabel>
         <h1 className="mt-3 max-w-2xl text-3xl font-extrabold sm:text-4xl tracking-tight">
-          Acoperim Constanța și împrejurimile.
+          Acoperim până la 100 km în jurul Dragodanei.
         </h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
           Selectează zona ta pentru detalii despre trasee, timp de sosire și tarife. Prețul îl primești la telefon.
