@@ -17,7 +17,6 @@ import a4 from "@/assets/google/avatar-4.png";
 import a10 from "@/assets/google/avatar-10.png";
 import a6 from "@/assets/google/avatar-6.png";
 import a7 from "@/assets/google/avatar-7.png";
-import a8 from "@/assets/google/avatar-8.png";
 import a9 from "@/assets/google/avatar-9.png";
 import { GoogleMark } from "@/components/site/GoogleMark";
 import { SectionLabel } from "@/components/site/ui";
