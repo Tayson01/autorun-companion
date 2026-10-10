@@ -397,19 +397,6 @@ function AnvelopeSH() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="px-5 pb-14">
-        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[32px] bg-brand p-7 text-brand-foreground shadow-glow sm:p-12">
-          <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full border-[36px] border-brand-foreground/10" />
-          <div className="relative grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-center">
-            <h2 className="text-3xl font-black leading-tight tracking-tight sm:text-5xl">Spune-ne dimensiunea. Restul e simplu.</h2>
-            <a href={waHref} target="_blank" rel="noreferrer" className="inline-flex min-h-16 items-center justify-center gap-2 rounded-2xl bg-background px-6 text-lg font-black text-foreground">
-              <MessageCircle className="size-5 text-success" /> {w}/{h} R{r}
-            </a>
-          </div>
-        </div>
-      </section>
-
       {lightbox !== null && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-foreground/90 p-4" onClick={() => setLightbox(null)}>
           <button type="button" aria-label="Închide" className="absolute right-4 top-4 flex size-12 items-center justify-center rounded-full bg-background text-foreground">
