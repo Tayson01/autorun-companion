@@ -120,7 +120,7 @@ export function InterventionsGallery() {
               Lucrări reale, clienți <span className="text-brand">reali.</span>
             </h2>
             <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-              Fotografii și recenzii direct de pe profilul nostru Google Maps — fără filtre, fără poze de stoc.
+              Fotografii și recenzii direct de pe profilul nostru Google Maps fără filtre, fără poze de stoc.
             </p>
           </div>
 
