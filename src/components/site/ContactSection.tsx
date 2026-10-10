@@ -1,7 +1,6 @@
 import { Clock, MapPin, MessageCircle, Phone, ShieldCheck, Navigation } from "lucide-react";
 
 import { SectionLabel } from "@/components/site/ui";
-import { ContactForm } from "@/components/site/ContactForm";
 import { ADDRESS, MAPS, PHONE, TEL, WA } from "@/lib/site-data";
 
 const trust = [
@@ -85,15 +84,35 @@ export function ContactSection() {
             </ul>
           </div>
 
-          {/* Formular rapid */}
-          <div className="rounded-[1.75rem] border border-border bg-card p-5 shadow-card sm:rounded-[2rem] sm:p-9">
-            <p className="text-lg font-extrabold tracking-tight">Trimite mesaj rapid</p>
-            <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-              Completezi în 20 de secunde, se deschide direct în WhatsApp.
-            </p>
-            <div className="mt-5">
-              <ContactForm bare />
-            </div>
+          {/* Detalii — listă fină */}
+          <div className="rounded-[1.75rem] border border-border bg-card p-2 shadow-card sm:rounded-[2rem]">
+            {[
+              { icon: Clock, label: "Program", value: "Non-stop · 24/24, 7 din 7", href: undefined },
+              { icon: Phone, label: "Telefon", value: PHONE, href: `tel:${TEL}` },
+              { icon: MessageCircle, label: "WhatsApp", value: "Trimite locația", href: WA },
+              { icon: MapPin, label: "Atelier", value: ADDRESS, href: MAPS },
+            ].map(({ icon: Icon, label, value, href }, i) => {
+              const inner = (
+                <>
+                  <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-brand/10 text-brand transition-colors group-hover:bg-brand group-hover:text-brand-foreground">
+                    <Icon className="size-5" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">{label}</span>
+                    <span className="mt-0.5 block truncate font-bold">{value}</span>
+                  </span>
+                  {href && <span className="text-muted-foreground transition-transform group-hover:translate-x-1">→</span>}
+                </>
+              );
+              const cls = `group flex items-center gap-4 rounded-[1.4rem] px-4 py-4 transition-colors ${i > 0 ? "border-t border-border" : ""} ${href ? "hover:bg-surface" : ""}`;
+              return href ? (
+                <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className={cls}>
+                  {inner}
+                </a>
+              ) : (
+                <div key={label} className={cls}>{inner}</div>
+              );
+            })}
           </div>
         </div>
       </div>
