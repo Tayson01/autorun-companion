@@ -8,8 +8,6 @@ import {
 } from "lucide-react";
 
 import { Btn, BtnLink } from "@/components/site/ui";
-import serviceVan from "@/assets/autorun-branded-van.webp";
-import serviceVanMobile from "@/assets/autorun-branded-van-mobile.webp";
 import { CoverageMapSection } from "@/components/site/CoverageMapSection";
 import { ServicesSection } from "@/components/site/ServicesSection";
 import { FAQSection } from "@/components/site/FAQSection";
@@ -51,7 +49,7 @@ export const Route = createFileRoute("/")({
           address: {
             "@type": "PostalAddress",
             streetAddress: "Calea Găești, Nr. 45, Dragodana",
-            addressLocality: "Constanța",
+            addressLocality: "Dragodana",
             postalCode: "137210",
             addressCountry: "RO",
           },
@@ -74,12 +72,7 @@ function Index() {
     <main>
       {/* Hero */}
       <section id="top" className="relative overflow-hidden">
-        <picture>
-          <source media="(max-width: 767px)" srcSet={serviceVanMobile} />
-<img src={serviceVan} alt="Dubă de vulcanizare mobilă cu inscripțiile Dragodana și numărul 0729 847 830" width={1537} height={1023} className="absolute inset-x-0 top-0 h-[15rem] w-full object-cover object-center sm:h-80 sm:object-right md:inset-0 md:h-full" fetchPriority="high" />
-        </picture>
-        <div className="autorun-hero-shade absolute inset-x-0 top-0 h-[15rem] sm:h-80 md:inset-0 md:h-full" aria-hidden="true" />
-        <div className="relative mx-auto max-w-6xl px-5 pb-7 pt-[15.5rem] sm:pt-80 md:pb-14 md:pt-16">
+        <div className="relative mx-auto max-w-6xl px-5 pb-7 pt-10 md:pb-14 md:pt-16">
           <div className="max-w-xl md:max-w-[48%]">
             <div className="animate-rise">
               <span className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-card/80 px-3 py-1.5 text-[11px] font-semibold text-muted-foreground shadow-card backdrop-blur sm:px-3.5 sm:text-xs">

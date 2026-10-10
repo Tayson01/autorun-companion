@@ -1,5 +1,5 @@
-import logo from "@/assets/autorun-logo.png";
-import logoDark from "@/assets/autorun-logo-dark.png";
+import logo from "@/assets/dragodana-logo.png";
+import logoDark from "@/assets/dragodana-logo-dark.png";
 import { Link } from "@tanstack/react-router";
 import { Phone, MessageCircle, MapPin } from "lucide-react";
 
@@ -11,7 +11,7 @@ export function Footer() {
       <footer className="border-t border-border bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link to="/" aria-label="Vulcanizare Dragodana"><img src={logo} alt="Vulcanizare Dragodana" width={1060} height={260} className="h-auto w-56 dark:hidden" /><img src={logoDark} alt="Vulcanizare Dragodana" width={1060} height={260} className="h-auto w-56 hidden dark:block" /></Link>
+            <Link to="/" aria-label="Vulcanizare Dragodana"><img src={logo} alt="Vulcanizare Dragodana" width={1280} height={340} className="h-auto w-56 dark:hidden" /><img src={logoDark} alt="Vulcanizare Dragodana" width={1280} height={340} className="h-auto w-56 hidden dark:block" /></Link>
             <p className="mt-3 text-sm text-muted-foreground">
               Servicii mobile de vulcanizare în Constanța și pe litoral, disponibili 24/7.
             </p>
