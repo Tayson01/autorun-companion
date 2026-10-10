@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  ChevronRight,
   Clock,
   MapPin,
   MessageCircle,
@@ -151,39 +152,59 @@ function Index() {
       <UsedTiresTeaser />
 
       {/* Bară urgență */}
-      <section className="border-y border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-10">
-          <div className="flex flex-wrap items-center justify-between gap-5">
-            <div>
-              <p className="text-base font-bold">Ai pană acum? Suntem deschiși non-stop în Dragodana.</p>
-              <p className="text-sm text-muted-foreground">
-                Vino oricând la atelier pe Calea Găești 45 sau trimite locația pe WhatsApp și pornim spre tine.
+      <section className="px-4 py-8 sm:py-12">
+        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-foreground p-5 text-background shadow-float sm:p-8">
+          <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-brand/30 blur-3xl" />
+          <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-xl">
+              <span className="inline-flex items-center gap-2 rounded-full bg-background/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
+                <span className="relative flex size-2">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
+                  <span className="relative inline-flex size-2 rounded-full bg-success" />
+                </span>
+                Deschis acum · Non-stop 24/24
+              </span>
+              <p className="mt-3 text-xl font-extrabold leading-tight sm:text-2xl">
+                Ai pană acum? <span className="text-brand">Suntem aici.</span>
+              </p>
+              <p className="mt-2 text-sm text-background/70">
+                Vino oricând la atelier pe Calea Găești 45, Dragodana, sau trimite locația pe WhatsApp și pornim spre tine.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <Btn href={`tel:${TEL}`} className="vm-callfx vm-callcta">
+            <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-3">
+              <Btn href={`tel:${TEL}`} className="vm-callfx vm-callcta justify-center">
                 <Phone className="size-4" /> <span className="tabular-nums">{PHONE}</span>
               </Btn>
-              <Btn href={WA} variant="ghost">
+              <a
+                href={WA}
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-background/20 bg-background/10 px-4 py-3 text-sm font-semibold transition hover:bg-background/20"
+              >
                 <MessageCircle className="size-4" /> WhatsApp
-              </Btn>
+              </a>
             </div>
           </div>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {zones.slice(0, 4).map((z) => (
-              <BtnLink
-                key={z.slug}
-                to="/zone/$slug"
-                params={{ slug: z.slug }}
-                variant="ghost"
-                className="flex-col items-start rounded-2xl px-4 py-4 text-left"
-              >
-                <span className="inline-flex items-center gap-2 text-sm font-semibold">
-                  <MapPin className="size-4 text-brand" /> {z.short}
-                </span>
-                <span className="mt-1 text-xs font-normal text-muted-foreground">{z.eta}</span>
-              </BtnLink>
-            ))}
+          <div className="relative mt-6 border-t border-background/10 pt-5">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-wider text-background/50">Timp estimat de sosire</p>
+            <div className="grid grid-cols-2 gap-2 lg:grid-cols-4 sm:gap-3">
+              {zones.slice(0, 4).map((z) => (
+                <Link
+                  key={z.slug}
+                  to="/zone/$slug"
+                  params={{ slug: z.slug }}
+                  className="group flex items-center justify-between gap-2 rounded-2xl bg-background/5 p-3 ring-1 ring-background/10 transition hover:bg-background/10 hover:ring-brand/60"
+                >
+                  <span className="min-w-0">
+                    <span className="flex items-center gap-1.5 truncate text-sm font-semibold">
+                      <MapPin className="size-3.5 shrink-0 text-brand" /> {z.short}
+                    </span>
+                    <span className="mt-1 flex items-center gap-1 text-xs text-background/60">
+                      <Clock className="size-3" /> {z.eta.replace("Sosire ", "")}
+                    </span>
+                  </span>
+                  <ChevronRight className="size-4 shrink-0 text-background/40 transition group-hover:translate-x-0.5 group-hover:text-brand" />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
