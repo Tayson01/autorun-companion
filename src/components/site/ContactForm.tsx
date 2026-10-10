@@ -12,13 +12,13 @@ export function ContactForm({
 }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [zone, setZone] = useState(defaultZone ?? zones[0]?.name ?? "Constanța");
+  const [zone, setZone] = useState(defaultZone ?? zones[0]?.name ?? "Dragodana");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<string | null>(null);
 
   function buildText(location?: { lat: number; lng: number }) {
     const lines = [
-      "Bună ziua! Am nevoie de vulcanizare mobilă.",
+      "Bună ziua! Am nevoie de vulcanizare.",
       name && `Nume: ${name}`,
       phone && `Telefon: ${phone}`,
       `Zonă: ${zone}`,
@@ -98,7 +98,7 @@ export function ContactForm({
               {z.name}
             </option>
           ))}
-          <option value="Altă localitate din județul Constanța">Altă localitate din județ</option>
+          <option value="Altă localitate">Altă localitate din județ</option>
         </select>
       </label>
       <label className="mt-4 block text-xs font-semibold text-muted-foreground">

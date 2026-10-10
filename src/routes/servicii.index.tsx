@@ -13,7 +13,7 @@ export const Route = createFileRoute("/servicii/")({
       {
         name: "description",
         content:
-          "Toate serviciile noastre mobile în Constanța: asistență rutieră 24/7, reparație pană pe loc, montaj la domiciliu, echilibrare roți, camioane și transport auto.",
+          "Toate serviciile Vulcanizare Dragodana, deschisă 24/24 și cu intervenții mobile: asistență rutieră 24/7, reparație pană pe loc, montaj la domiciliu, echilibrare roți, camioane și transport auto.",
       },
       { property: "og:title", content: "Servicii — Vulcanizare Dragodana" },
       {
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/servicii/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://vulcanizareautorun.ro/servicii" }],
+    links: [{ rel: "canonical", href: "https://vulcanizaredragodana.ro/servicii" }],
   }),
   component: ServiciiPage,
 });
@@ -36,7 +36,7 @@ function ServiciiPage() {
         Tot ce ai nevoie, într-un singur loc.
       </h1>
       <p className="mt-4 max-w-2xl text-muted-foreground">
-        De la pene neașteptate pe drum până la întreținere programată — echipa noastră mobilă din Constanța se
+        De la pene neașteptate pe drum până la întreținere programată — echipa noastră din Dragodana se
         ocupă de tot, 24/7.
       </p>
 

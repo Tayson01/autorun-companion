@@ -21,22 +21,22 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Vulcanizare Mobilă Constanța 24/7 – Vulcanizare Dragodana | 0729 847 830" },
+      { title: "Vulcanizare Dragodana 24/24 – Non-stop & Mobilă | 0729 847 830" },
       {
         name: "description",
         content:
-          "Vulcanizare mobilă non-stop în Constanța, Mamaia, Năvodari și pe A2/A4: intervenții rapide 24/7 pentru autoturisme, camioane și flote, direct la locația ta.",
+          "Vulcanizare deschisă non-stop în Dragodana, pe Calea Găești 45, plus intervenții mobile în Găești, Târgoviște, Titu și pe A1, pentru autoturisme, camioane și flote.",
       },
-      { property: "og:title", content: "Vulcanizare Mobilă Constanța 24/7 – Vulcanizare Dragodana" },
+      { property: "og:title", content: "Vulcanizare Dragodana 24/24 – Non-stop & Mobilă" },
       {
         property: "og:description",
         content:
-          "Intervenții rapide 24/7 pentru autoturisme, camioane și flote, direct la locația ta în Constanța.",
+          "Intervenții rapide 24/7 pentru autoturisme, camioane și flote, în atelier sau direct la locația ta, în Dâmbovița.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://vulcanizareautorun.ro/" }],
+    links: [{ rel: "canonical", href: "https://vulcanizaredragodana.ro/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/")({
           "@type": "AutoRepair",
           name: "Vulcanizare Dragodana",
           telephone: TEL,
-          url: "https://vulcanizareautorun.ro/",
+          url: "https://vulcanizaredragodana.ro/",
           address: {
             "@type": "PostalAddress",
             streetAddress: "Calea Găești, Nr. 45, Dragodana",
@@ -80,7 +80,7 @@ function Index() {
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-70" />
                   <span className="relative inline-flex size-2 rounded-full bg-success" />
                 </span>
-                Disponibili 24/7 în Constanța și împrejurimi
+                Deschis 24/24 în Dragodana · intervenții până la 100 km
               </span>
 
               <h1 className="mt-4 text-[2.1rem] font-black leading-[1.06] sm:text-5xl md:leading-[1.02]">
@@ -88,8 +88,8 @@ function Index() {
               </h1>
 
               <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-                Vulcanizare mobilă în Constanța. Asistență non-stop, reparații pe loc și intervenții pe
-                A2, A4 și litoral. Ajungem la tine în cel mai scurt timp.
+                Vulcanizare deschisă 24/24 pe Calea Găești 45, Dragodana. Vino la noi oricând sau venim noi la tine:
+                Găești, Târgoviște, Titu, A1 și până la 100 km.
               </p>
 
               <div className="mt-5 grid gap-2.5 sm:mt-8 sm:flex sm:flex-wrap sm:gap-3">

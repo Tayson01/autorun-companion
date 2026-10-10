@@ -372,7 +372,7 @@ export default function CoverageMap() {
     ? waLink(
         `Bună ziua! Am nevoie de vulcanizare mobilă la locația: https://maps.google.com/?q=${coordStr}`,
       )
-    : waLink("Bună ziua! Am nevoie de vulcanizare mobilă.");
+    : waLink("Bună ziua! Am nevoie de vulcanizare.");
 
   const fabs = [
     {

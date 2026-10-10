@@ -11,7 +11,7 @@ describe("Dragodana business contact", () => {
   test("WhatsApp uses the same real number", () => {
     expect(WA_NUMBER).toBe("40729847830");
     expect(new URL(WA).pathname).toBe("/40729847830");
-    const message = "Pană în Constanța, 205/55 R16";
+    const message = "Pană în Găești, 205/55 R16";
     const link = new URL(waLink(message));
     expect(link.pathname).toBe("/40729847830");
     expect(link.searchParams.get("text")).toBe(message);

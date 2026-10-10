@@ -13,7 +13,7 @@ export function Footer() {
           <div>
             <Link to="/" aria-label="Vulcanizare Dragodana"><img src={logo} alt="Vulcanizare Dragodana" width={1280} height={340} className="h-auto w-56 dark:hidden" /><img src={logoDark} alt="Vulcanizare Dragodana" width={1280} height={340} className="h-auto w-56 hidden dark:block" /></Link>
             <p className="mt-3 text-sm text-muted-foreground">
-              Servicii mobile de vulcanizare în Constanța și pe litoral, disponibili 24/7.
+              Vulcanizare deschisă 24/24 în Dragodana, plus intervenții mobile pe o rază de 100 km.
             </p>
             <div className="mt-4 space-y-2 text-sm text-muted-foreground">
               <p className="inline-flex items-center gap-2"><MapPin className="size-4 text-brand" /> {ADDRESS}</p>

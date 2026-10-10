@@ -11,7 +11,7 @@ export const Route = createFileRoute("/intrebari-frecvente")({
       {
         name: "description",
         content:
-          "Prețuri, timpi de sosire, servicii pe loc, plata cu cardul și intervenții pentru camioane — răspunsuri clare despre vulcanizarea mobilă în Constanța.",
+          "Prețuri, timpi de sosire, servicii pe loc, plata cu cardul și intervenții pentru camioane — răspunsuri clare despre Vulcanizare Dragodana, deschisă non-stop.",
       },
       { property: "og:title", content: "Întrebări frecvente — Vulcanizare Dragodana" },
       {
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/intrebari-frecvente")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://vulcanizareautorun.ro/intrebari-frecvente" }],
+    links: [{ rel: "canonical", href: "https://vulcanizaredragodana.ro/intrebari-frecvente" }],
     scripts: [
       {
         type: "application/ld+json",
