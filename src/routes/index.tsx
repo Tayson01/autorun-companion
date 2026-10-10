@@ -88,14 +88,18 @@ function Index() {
 
               <h1 className="mt-4 text-[2.1rem] font-black leading-[1.06] sm:text-5xl md:leading-[1.02]">
                 Vulcanizare <span className="text-brand">Dragodana</span>
-                <span className="vm-badge-glow vm-shine relative mt-4 inline-flex overflow-hidden rounded-2xl text-lg font-black tracking-wide sm:text-2xl">
-                  <span className="bg-brand px-3.5 py-1.5 text-brand-foreground">NON-STOP</span>
-                  <span className="flex items-center gap-1.5 bg-foreground px-3.5 py-1.5 tabular-nums text-background">
-                    <span className="relative flex size-2">
-                      <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
-                      <span className="relative inline-flex size-2 rounded-full bg-success" />
+                <span className="mt-3 flex items-center gap-3">
+                  <span className="vm-text-sweep text-[4.2rem] font-black leading-[0.85] tracking-tighter tabular-nums sm:text-8xl">24/24</span>
+                  <span className="flex flex-col border-l-2 border-brand pl-3 text-xs font-black uppercase leading-tight tracking-[0.18em] text-foreground sm:text-sm">
+                    <span>Non-stop</span>
+                    <span className="text-muted-foreground">7 din 7</span>
+                    <span className="mt-1 flex items-center gap-1.5 text-success">
+                      <span className="relative flex size-2">
+                        <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
+                        <span className="relative inline-flex size-2 rounded-full bg-success" />
+                      </span>
+                      Deschis
                     </span>
-                    24/24
                   </span>
                 </span>
               </h1>
