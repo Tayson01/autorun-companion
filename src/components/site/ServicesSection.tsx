@@ -50,8 +50,8 @@ export function ServicesSection() {
             Tot ce ai nevoie, într-un singur loc.
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            De la pene neașteptate pe drum până la întreținere programată — echipa noastră mobilă din
-            Constanța se ocupă de tot.
+            De la pene neașteptate pe drum până la întreținere programată — echipa noastră din
+            Dragodana se ocupă de tot.
           </p>
         </div>
 
@@ -169,7 +169,7 @@ export function ServicesSection() {
 
                 <div className="mt-5 flex items-start gap-2 text-xs text-muted-foreground">
                   <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand" />
-                  <span>Acoperim A2, A4, DN39, DN3 și tot județul Constanța.</span>
+                  <span>Acoperim A1, DN7, DN71, DN61 și o rază de 100 km.</span>
                 </div>
               </div>
             </div>

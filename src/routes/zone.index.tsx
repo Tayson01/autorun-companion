@@ -9,21 +9,21 @@ export const Route = createFileRoute("/zone/")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Zone deservite — Vulcanizare Dragodana și litoral" },
+      { title: "Zone deservite — Vulcanizare Dragodana, 100 km în jur" },
       {
         name: "description",
         content:
-          "Acoperim Constanța, Mamaia, Năvodari, Agigea, A2/A4, Ovidiu, Eforie, Techirghiol și Mangalia. Vezi harta de acoperire și timpii de sosire.",
+          "Acoperim Dragodana, Găești, Târgoviște, Titu, Pitești, autostrada A1 și până la 100 km în jur. Vezi harta de acoperire și timpii de sosire.",
       },
       { property: "og:title", content: "Zone deservite — Vulcanizare Dragodana" },
       {
         property: "og:description",
-        content: "Hartă de acoperire cu timpi estimați de sosire în Constanța și pe litoral.",
+        content: "Hartă de acoperire cu timpi estimați de sosire în Dâmbovița și împrejurimi.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://vulcanizareautorun.ro/zone" }],
+    links: [{ rel: "canonical", href: "https://vulcanizaredragodana.ro/zone" }],
   }),
   component: ZonePage,
 });

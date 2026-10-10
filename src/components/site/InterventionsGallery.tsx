@@ -88,7 +88,7 @@ export function InterventionsGallery() {
         </div>
 
         <p className="mt-4 text-xs text-muted-foreground">
-          Fotografii publicate pe profilul Google Maps Vulcanizare Mobila Constanta.
+          Fotografii publicate pe profilul Google Maps Vulcanizare Dragodana.
         </p>
 
         <div className="mt-10 border-t border-border pt-8 sm:mt-12 sm:pt-10">

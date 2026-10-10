@@ -19,7 +19,7 @@ export const Route = createFileRoute("/zone/$slug")({
       : "Zonă deservită — Vulcanizare Dragodana";
     const description = z
       ? `${z.desc} Timp estimat de sosire: ${z.etaMinutes}. Intervenții 24/7, sună la ${PHONE}.`
-      : "Zone deservite de vulcanizarea mobilă din Constanța.";
+      : "Zone deservite de Vulcanizare Dragodana.";
     return {
       meta: [
         { title },
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/zone/$slug")({
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
-      links: [{ rel: "canonical", href: `https://vulcanizareautorun.ro/zone/${z?.slug ?? ""}` }],
+      links: [{ rel: "canonical", href: `https://vulcanizaredragodana.ro/zone/${z?.slug ?? ""}` }],
     };
   },
   component: ZonePage,
@@ -41,7 +41,7 @@ function ZonePage() {
   return (
     <main className="mx-auto max-w-5xl px-5 py-14">
       <SectionLabel>Zonă deservită</SectionLabel>
-      <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl tracking-tight">Vulcanizare mobilă {zone.name}</h1>
+      <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl tracking-tight">Vulcanizare {zone.name}</h1>
       <p className="mt-4 max-w-2xl text-muted-foreground">{zone.intro}</p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">

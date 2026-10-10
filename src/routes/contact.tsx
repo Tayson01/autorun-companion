@@ -13,17 +13,17 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Sună la 0729 847 830 sau trimite locația pe WhatsApp. Vulcanizare mobilă în Constanța, disponibili 24/7, Calea Găești, Nr. 45, Dragodana.",
+          "Sună la 0729 847 830 sau trimite locația pe WhatsApp. Vulcanizare non-stop în Dragodana și intervenții mobile, Calea Găești, Nr. 45, Dragodana.",
       },
       { property: "og:title", content: "Contact — Vulcanizare Dragodana" },
       {
         property: "og:description",
-        content: "Telefon, WhatsApp cu locație și adresă — intervenții non-stop în Constanța.",
+        content: "Telefon, WhatsApp cu locație și adresă — vulcanizare non-stop în Dragodana, Dâmbovița.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "https://vulcanizareautorun.ro/contact" }],
+    links: [{ rel: "canonical", href: "https://vulcanizaredragodana.ro/contact" }],
   }),
   component: ContactPage,
 });

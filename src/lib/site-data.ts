@@ -2,7 +2,7 @@ export const PHONE = "0729 847 830";
 export const TEL = "+40729847830";
 export const WA_NUMBER = "40729847830";
 export const WA =
-  "https://wa.me/40729847830?text=Bun%C4%83%20ziua!%20Am%20nevoie%20de%20vulcanizare%20mobil%C4%83%20%C3%AEn%20Constan%C8%9Ba.";
+  "https://wa.me/40729847830?text=Bun%C4%83%20ziua!%20Am%20nevoie%20de%20vulcanizare.";
 export const MAPS = "https://maps.app.goo.gl/i5PAv56cqGkRsLGX8";
 export const REVIEWS = MAPS;
 
@@ -40,20 +40,20 @@ export const services: Service[] = [
     slug: "asistenta-rutiera",
     icon: "lifebuoy",
     title: "Asistență rutieră 24/7",
-    desc: "Intervenim non-stop pe A2, A4, DN39 și în tot orașul, indiferent de oră.",
+    desc: "Intervenim non-stop pe A1, DN7 și în toată zona, indiferent de oră.",
     intro:
       "Rămâi cu pana pe autostradă sau pe drum național? Venim la tine cu duba de intervenție, complet echipată, la orice oră din zi sau din noapte. Nu ai nevoie de platformă și nu trebuie să îți muți mașina.",
     price: "Preț la telefon",
     priceFrom: "Preț la telefon",
     priceNote: "deplasare inclusă în oraș",
     pricing: [
-      { label: "În Constanța", value: "la telefon", note: "deplasare inclusă" },
-      { label: "A2 / A4 / DN39", value: "la telefon", note: "autostradă & drum național" },
+      { label: "Dragodana / Găești", value: "la telefon", note: "deplasare inclusă" },
+      { label: "A1 / DN7 / DN71", value: "la telefon", note: "autostradă & drum național" },
       { label: "Camioane & utilitare", value: "personalizat", note: "contracte flote" },
     ],
     duration: "20–40 minute pe loc",
     bullets: [
-      "Intervenții pe A2, A4, DN39, DN3 și centura Constanța",
+      "Intervenții pe A1, DN7, DN71, DN61 și drumurile județene",
       "Sculărie profesională și compresor la bord",
       "Anvelope de schimb pentru cele mai comune dimensiuni",
       "Semnalizare corectă a zonei de lucru, în siguranță",
@@ -149,7 +149,7 @@ export const services: Service[] = [
     priceNote: "contracte flote",
     duration: "30–60 minute pe roată",
     bullets: [
-      "Intervenții pe A2, A4 și în zona Portului Constanța",
+      "Intervenții pe A1, DN7 și în zonele industriale din jur",
       "Reparații și schimb pentru roți de camion și remorcă",
       "Contracte și facturare lunară pentru flote",
       "Prioritate la dispecerat pentru clienții pe contract",
@@ -165,9 +165,9 @@ export const services: Service[] = [
     slug: "transport-auto",
     icon: "navigation",
     title: "Transport auto",
-    desc: "Tractare și transport pentru autoturisme în Constanța și împrejurimi.",
+    desc: "Tractare și transport pentru autoturisme în Dâmbovița și împrejurimi.",
     intro:
-      "Când anvelopa nu mai poate fi reparată sau mașina nu poate rula, organizăm tractarea către service-ul sau adresa dorită, în Constanța și în județ.",
+      "Când anvelopa nu mai poate fi reparată sau mașina nu poate rula, organizăm tractarea către service-ul sau adresa dorită, în Dâmbovița și județele vecine.",
     price: "Preț la telefon",
     priceFrom: "Preț la telefon",
     priceNote: "în funcție de distanță",
@@ -395,7 +395,7 @@ export function waLink(text: string) {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 
-export const EMAIL = "contact@vulcanizaremobilaconstanta.ro";
+export const EMAIL = "contact@vulcanizaredragodana.ro";
 export const ADDRESS = "Calea Găești, Nr. 45, Dragodana";
 
 export const stats = [
@@ -409,20 +409,20 @@ export const reviews = [
   {
     initials: "LS",
     name: "Laur Solomon",
-    when: "Constanța",
+    when: "Găești",
     text: "Cel mai bun pe cuvânt și punctual, lucrează cel mai bine și cel mai rapid oriunde ai fi.",
   },
   {
     initials: "CI",
     name: "Ciprian",
-    when: "Constanța",
+    when: "Găești",
     text: "A fost la fața locului în 15 minute. Politicos și corect, prețul foarte rezonabil. Pneul a fost reparat în 10 minute.",
   },
   {
     initials: "AM",
     name: "Andrei M.",
     when: "acum 3 săptămâni",
-    text: "Pană pe A4 la 23:00. Au ajuns rapid, montaj profesionist, preț corect. Salvatori!",
+    text: "Pană pe A1 la 23:00. Au ajuns rapid, montaj profesionist, preț corect. Salvatori!",
   },
   {
     initials: "EP",
@@ -434,7 +434,7 @@ export const reviews = [
 
 export const faqs = [
   {
-    q: "Cât costă o intervenție de vulcanizare mobilă în Constanța?",
+    q: "Cât costă o intervenție la Vulcanizare Dragodana?",
     a: "Tariful depinde de tipul intervenției și de distanță și îl primești la telefon înainte de plecare, fără surprize. Sunați pentru o estimare exactă în 30 de secunde.",
     category: "prețuri",
   },
@@ -445,7 +445,7 @@ export const faqs = [
   },
   {
     q: "Cât durează până ajungeți la mine?",
-    a: "În Constanța oraș ajungem în 10–20 de minute. În Mamaia, Năvodari sau Agigea în 15–35 de minute. În Eforie, Techirghiol sau Ovidiu în 25–45 de minute, în funcție de trafic.",
+    a: "Atelierul din Dragodana e deschis 24/24, poți veni oricând. Cu intervenția mobilă ajungem în Dragodana și Găești în 5–15 minute, în Târgoviște sau Titu în 20–35 de minute, iar până la 100 km în maximum 90 de minute, în funcție de trafic.",
     category: "timp-sosire",
   },
   {
@@ -460,7 +460,7 @@ export const faqs = [
   },
   {
     q: "Lucrați și cu camioane sau TIR?",
-    a: "Da, avem echipament special pentru vulcanizare camioane și autotrenuri. Intervenim pe A2, A4 și în zona portului pentru flote și transportatori.",
+    a: "Da, avem echipament special pentru vulcanizare camioane și autotrenuri. Intervenim pe A1, DN7 și în zonele industriale pentru flote și transportatori.",
     category: "servicii",
   },
   {

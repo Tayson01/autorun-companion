@@ -14,10 +14,10 @@ export const Route = createFileRoute("/servicii/$slug")({
   },
   head: ({ loaderData }) => {
     const s = loaderData?.service;
-    const title = s ? `${s.title} în Constanța — Vulcanizare Dragodana` : "Serviciu — Vulcanizare Dragodana";
+    const title = s ? `${s.title} în Dragodana — Vulcanizare Dragodana` : "Serviciu — Vulcanizare Dragodana";
     const description = s
       ? `${s.desc} Preț la telefon, durată ${s.duration}. Sună la ${PHONE}.`
-      : "Servicii mobile de vulcanizare în Constanța.";
+      : "Vulcanizare non-stop în Dragodana și intervenții mobile pe 100 km.";
     return {
       meta: [
         { title },
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/servicii/$slug")({
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
-      links: [{ rel: "canonical", href: `https://vulcanizareautorun.ro/servicii/${s?.slug ?? ""}` }],
+      links: [{ rel: "canonical", href: `https://vulcanizaredragodana.ro/servicii/${s?.slug ?? ""}` }],
     };
   },
   component: ServicePage,
@@ -94,7 +94,7 @@ function ServicePage() {
       <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-brand p-7 text-brand-foreground">
         <div>
           <p className="text-lg font-bold">Ai nevoie acum de {service.title.toLowerCase()}?</p>
-          <p className="text-sm opacity-90">Suntem disponibili 24/7 în Constanța și pe litoral.</p>
+          <p className="text-sm opacity-90">Suntem deschiși 24/24 în Dragodana și venim la tine până la 100 km.</p>
         </div>
         <div className="flex flex-wrap gap-3">
           <a
