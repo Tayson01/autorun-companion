@@ -812,3 +812,15 @@
 @media (prefers-reduced-motion: reduce) { .vm-kenburns, .vm-marquee, .vm-shine::after { animation: none; } }
 @keyframes vm-spin { to { transform: rotate(360deg); } }
 .vm-spin { animation: vm-spin 40s linear infinite; }
+
+@keyframes vm-bar-shine {
+  0% { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(250%); }
+}
+@keyframes vm-dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-brand) 45%, transparent); }
+  50% { box-shadow: 0 0 0 6px transparent; }
+}
+.vm-bar-shine { animation: vm-bar-shine 2.8s ease-in-out infinite; }
+.vm-dot-pulse { animation: vm-dot-pulse 2.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .vm-bar-shine, .vm-dot-pulse { animation: none; } }
