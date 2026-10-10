@@ -29,12 +29,6 @@ const categories: { id: string; label: string; icon: LucideIcon }[] = [
   { id: "siguranță", label: "Siguranță", icon: ShieldCheck },
 ];
 
-const quick = [
-  { k: "40 lei", v: "Schimb + echilibrare 4 roți, în atelier" },
-  { k: "24/24", v: "Deschis non-stop, inclusiv sărbători" },
-  { k: "100 km", v: "Rază maximă pentru intervenții mobile" },
-];
-
 export function FAQSection() {
   const [open, setOpen] = useState<string | null>(faqs[0]?.q ?? null);
   const [query, setQuery] = useState("");
@@ -68,16 +62,6 @@ export function FAQSection() {
             Prețuri, program, timpi de sosire și plată — tot ce trebuie să știi despre
             Vulcanizare Dragodana, într-un singur loc.
           </p>
-        </div>
-
-        {/* Quick facts */}
-        <div className="mt-10 grid gap-3 sm:grid-cols-3">
-          {quick.map((q) => (
-            <div key={q.k} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-card">
-              <p className="text-3xl font-black tracking-tight text-brand">{q.k}</p>
-              <p className="text-sm leading-snug text-muted-foreground">{q.v}</p>
-            </div>
-          ))}
         </div>
 
         {/* Search */}
