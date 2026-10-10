@@ -28,7 +28,7 @@ export function UsedTiresStock() {
   const [h, setH] = useState("55");
   const [r, setR] = useState("16");
   const msg = encodeURIComponent(`Bună! Aveți anvelope SH ${w}/${h} R${r}?`);
-  const waHref = `${WA}${WA.includes("?") ? "&" : "?"}text=${msg}`;
+  const waHref = `${WA.split("?")[0]}?text=${msg}`;
 
   const sel = "h-12 w-full rounded-xl border border-border bg-card px-3 text-base font-bold outline-none focus:border-brand";
 
@@ -72,7 +72,7 @@ export function UsedTiresStock() {
               "col-span-4 row-span-2",
             ].map((cls, i) => (
               <div key={i} className={`group relative overflow-hidden rounded-2xl ${cls}`}>
-                <img src={photos[i].src} alt={photos[i].alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img src={photos[i]!.src} alt={photos[i]!.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
               </div>
             ))}
           </div>
@@ -119,7 +119,7 @@ export function UsedTiresStock() {
                   type="button"
                   onClick={() => {
                     const m = s.match(/(\d+)\/(\d+) R(\d+)/);
-                    if (m) { setW(m[1]); setH(m[2]); setR(m[3]); }
+                    if (m) { setW(m[1]!); setH(m[2]!); setR(m[3]!); }
                   }}
                   className="rounded-full border border-border bg-surface px-3.5 py-2 text-sm font-bold tabular-nums transition-colors hover:border-brand hover:bg-brand hover:text-brand-foreground"
                 >
