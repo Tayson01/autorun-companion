@@ -14,9 +14,9 @@ import { SectionLabel } from "@/components/site/ui";
 
 const photos = [
   { src: photo02, alt: "Schimb de roată efectuat la client" },
-  { src: photo03, alt: "Intervenție Autorun la un autoturism albastru" },
+  { src: photo03, alt: "Intervenție Dragodana la un autoturism albastru" },
   { src: photo04, alt: "Intervenție de vulcanizare la o dubă" },
-  { src: photo05, alt: "Duba Autorun la o intervenție de noapte" },
+  { src: photo05, alt: "Duba Dragodana la o intervenție de noapte" },
   { src: photo06, alt: "Schimb de roată în parcarea clientului" },
   { src: photo07, alt: "Intervenție de vulcanizare pe autostradă" },
   { src: photo08, alt: "Reparație de roată direct în oraș" },

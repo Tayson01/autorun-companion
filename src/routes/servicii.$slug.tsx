@@ -14,7 +14,7 @@ export const Route = createFileRoute("/servicii/$slug")({
   },
   head: ({ loaderData }) => {
     const s = loaderData?.service;
-    const title = s ? `${s.title} în Constanța — Vulcanizare Autorun` : "Serviciu — Vulcanizare Autorun";
+    const title = s ? `${s.title} în Constanța — Vulcanizare Dragodana` : "Serviciu — Vulcanizare Dragodana";
     const description = s
       ? `${s.desc} Preț la telefon, durată ${s.duration}. Sună la ${PHONE}.`
       : "Servicii mobile de vulcanizare în Constanța.";

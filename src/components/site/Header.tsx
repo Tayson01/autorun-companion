@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Phone, Menu, X, MessageCircle, ChevronRight } from "lucide-react";
 
-import logo from "@/assets/autorun-logo.png";
-import logoDark from "@/assets/autorun-logo-dark.png";
+import logo from "@/assets/dragodana-logo.png";
+import logoDark from "@/assets/dragodana-logo-dark.png";
 
 import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { PHONE, TEL, WA } from "@/lib/site-data";
@@ -42,7 +42,7 @@ export function Header() {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4 sm:px-5">
         <Link to="/" className="flex shrink-0 items-center gap-2">
-          <img src={logo} alt="Vulcanizare Autorun" width={1060} height={260} className="h-auto w-28 shrink-0 sm:w-52 dark:hidden" /><img src={logoDark} alt="Vulcanizare Autorun" width={1060} height={260} className="h-auto w-28 shrink-0 sm:w-52 hidden dark:block" />
+          <img src={logo} alt="Vulcanizare Dragodana" width={1280} height={340} className="h-auto w-28 shrink-0 sm:w-52 dark:hidden" /><img src={logoDark} alt="Vulcanizare Dragodana" width={1280} height={340} className="h-auto w-28 shrink-0 sm:w-52 hidden dark:block" />
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground lg:flex">

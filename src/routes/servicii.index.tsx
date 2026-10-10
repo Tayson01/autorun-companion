@@ -9,13 +9,13 @@ export const Route = createFileRoute("/servicii/")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Servicii — Vulcanizare Autorun — listă completă" },
+      { title: "Servicii — Vulcanizare Dragodana — listă completă" },
       {
         name: "description",
         content:
           "Toate serviciile noastre mobile în Constanța: asistență rutieră 24/7, reparație pană pe loc, montaj la domiciliu, echilibrare roți, camioane și transport auto.",
       },
-      { property: "og:title", content: "Servicii — Vulcanizare Autorun" },
+      { property: "og:title", content: "Servicii — Vulcanizare Dragodana" },
       {
         property: "og:description",
         content: "Asistență rutieră, reparații pe loc, montaj la domiciliu, echilibrare roți și camioane.",
