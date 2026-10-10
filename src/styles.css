@@ -787,3 +787,17 @@
 .gallery-lb-btn:hover { background: color-mix(in oklab, var(--gallery-lb-foreground) 24%, transparent); }
 .gallery-reviews { scrollbar-width: thin; }
 @keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* Hero stat cards & buttons effects */
+@keyframes vm-shine { 0% { transform: translateX(-120%) skewX(-20deg); } 60%,100% { transform: translateX(260%) skewX(-20deg); } }
+@keyframes vm-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.vm-shine { position: relative; overflow: hidden; isolation: isolate; }
+.vm-shine::after { content: ""; position: absolute; inset: 0; width: 40%; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--background) 45%, transparent), transparent);
+  animation: vm-shine 3.2s ease-in-out infinite; }
+.vm-stat { position: relative; overflow: hidden; }
+.vm-stat::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1.5px; pointer-events: none; opacity: 0; transition: opacity .35s;
+  background: linear-gradient(135deg, var(--brand), transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; -webkit-mask-composite: xor; }
+.vm-stat:hover::before { opacity: 1; }
+.vm-float { animation: vm-float 3s ease-in-out infinite; }
