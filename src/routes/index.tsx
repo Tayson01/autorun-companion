@@ -13,6 +13,7 @@ import { ServicesSection } from "@/components/site/ServicesSection";
 import { FAQSection } from "@/components/site/FAQSection";
 import { ContactSection } from "@/components/site/ContactSection";
 import { InterventionsGallery } from "@/components/site/InterventionsGallery";
+import { PriceHighlight } from "@/components/site/PriceHighlight";
 import { BASE, PHONE, TEL, WA, zones } from "@/lib/site-data";
 
 
@@ -128,6 +129,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <PriceHighlight />
 
       {/* Bară urgență */}
       <section className="border-y border-border bg-surface">
