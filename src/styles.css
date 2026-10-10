@@ -801,3 +801,6 @@
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; }
 .vm-stat:hover::before { opacity: 1; }
 .vm-float { animation: vm-float 3s ease-in-out infinite; }
+@keyframes vm-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.vm-marquee { animation: vm-marquee 30s linear infinite; }
+.vm-marquee:hover { animation-play-state: paused; }
