@@ -19,6 +19,7 @@ import {
   Tractor,
 } from "lucide-react";
 
+import { TireDecoder } from "@/components/site/TireDecoder";
 import { ADDRESS, MAPS, PHONE, TEL, WA } from "@/lib/site-data";
 import s1 from "@/assets/stoc/stoc-1.jpg";
 import s2 from "@/assets/stoc/stoc-2.jpg";
@@ -359,32 +360,15 @@ function AnvelopeSH() {
 
       {/* HOW TO READ SIZE */}
       <section className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-center">
           <div>
-            <p className="text-xs font-black uppercase tracking-widest text-brand">Nu știi dimensiunea?</p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-5xl">E scrisă pe flancul anvelopei.</h2>
+            <p className="text-xs font-black uppercase tracking-widest text-brand">Citește-ți anvelopa</p>
+            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-5xl">Ce înseamnă codul de pe flanc?</h2>
             <p className="mt-4 text-muted-foreground">
-              Uită-te pe partea laterală a roții. Sau fă o poză și trimite-ne-o pe WhatsApp — îți spunem noi ce îți trebuie.
+              Apasă pe fiecare parte a codului și vezi ce înseamnă. Sau fă o poză anvelopei tale și trimite-ne-o pe WhatsApp — îți spunem noi ce îți trebuie.
             </p>
           </div>
-          <div className="rounded-[32px] bg-foreground p-6 text-background shadow-float sm:p-10">
-            <p className="text-center font-mono text-5xl font-black tracking-tight sm:text-7xl">
-              <span className="text-brand">205</span>/<span>55</span> <span className="text-brand">R16</span>
-            </p>
-            <div className="mt-8 grid grid-cols-3 gap-3 text-center text-sm">
-              {[
-                ["205", "Lățimea", "în milimetri"],
-                ["55", "Profilul", "% din lățime"],
-                ["R16", "Janta", "diametru în țoli"],
-              ].map(([a, b, c]) => (
-                <div key={a} className="rounded-2xl border border-background/15 bg-background/5 p-3">
-                  <p className="text-xl font-black text-brand">{a}</p>
-                  <p className="mt-1 font-bold">{b}</p>
-                  <p className="text-xs opacity-60">{c}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <TireDecoder />
         </div>
       </section>
 
