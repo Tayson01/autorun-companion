@@ -1,134 +1,217 @@
-import { Camera, ExternalLink, Quote, Star } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { Camera, ChevronLeft, ChevronRight, ExternalLink, Quote, Star, X } from "lucide-react";
 
-import photo02 from "@/assets/gallery/interventie-02.jpg";
-import photo03 from "@/assets/gallery/interventie-03.jpg";
-import photo04 from "@/assets/gallery/interventie-04.jpg";
-import photo05 from "@/assets/gallery/interventie-05.jpg";
-import photo06 from "@/assets/gallery/interventie-06.jpg";
-import photo07 from "@/assets/gallery/interventie-07.jpg";
-import photo08 from "@/assets/gallery/interventie-08.jpg";
-import photo09 from "@/assets/gallery/interventie-09.jpg";
-import photo10 from "@/assets/gallery/interventie-10.jpg";
-import { MAPS } from "@/lib/site-data";
+import f1 from "@/assets/google/foto-1.jpg";
+import f2 from "@/assets/google/foto-2.jpg";
+import f3 from "@/assets/google/foto-3.jpg";
+import f4 from "@/assets/google/foto-4.jpg";
+import f5 from "@/assets/google/foto-5.jpg";
+import f6 from "@/assets/google/foto-6.jpg";
+import f7 from "@/assets/google/foto-7.jpg";
+import f8 from "@/assets/google/foto-8.jpg";
+import f9 from "@/assets/google/foto-9.jpg";
+import f10 from "@/assets/google/foto-10.jpg";
+import a1 from "@/assets/google/avatar-1.png";
+import a2 from "@/assets/google/avatar-2.png";
+import a3 from "@/assets/google/avatar-3.png";
+import a4 from "@/assets/google/avatar-4.png";
+import a5 from "@/assets/google/avatar-5.png";
+import a6 from "@/assets/google/avatar-6.png";
+import a7 from "@/assets/google/avatar-7.png";
+import a8 from "@/assets/google/avatar-8.png";
+import a9 from "@/assets/google/avatar-9.png";
+import { GoogleMark } from "@/components/site/GoogleMark";
 import { SectionLabel } from "@/components/site/ui";
 
+const GOOGLE_URL = "https://maps.app.goo.gl/JiXsr3WJvsk4Q7V1A";
+const RATING = 4.9;
+const COUNT = 177;
+
+const owner = { name: "Vulcanizare NonStop", avatar: a9 };
+
+/** Fotografii preluate de pe profilul Google Maps, cu autorul fiecăreia. */
 const photos = [
-  { src: photo02, alt: "Schimb de roată efectuat la client" },
-  { src: photo03, alt: "Intervenție Dragodana la un autoturism albastru" },
-  { src: photo04, alt: "Intervenție de vulcanizare la o dubă" },
-  { src: photo05, alt: "Duba Dragodana la o intervenție de noapte" },
-  { src: photo06, alt: "Schimb de roată în parcarea clientului" },
-  { src: photo07, alt: "Intervenție de vulcanizare pe autostradă" },
-  { src: photo08, alt: "Reparație de roată direct în oraș" },
-  { src: photo09, alt: "Asistență auto pentru pornirea unei mașini" },
-  { src: photo10, alt: "Reparație auto efectuată la locația clientului" },
+  { src: f1, w: 1440, h: 810, author: owner },
+  { src: f4, w: 1200, h: 1600, author: owner },
+  { src: f8, w: 4032, h: 3024, author: { name: "El Nicu", avatar: a6 } },
+  { src: f2, w: 960, h: 540, author: owner },
+  { src: f3, w: 720, h: 960, author: owner },
+  { src: f9, w: 3264, h: 1468, author: { name: "Cosmin Cox", avatar: a7 } },
+  { src: f5, w: 860, h: 746, author: owner },
+  { src: f6, w: 720, h: 960, author: owner },
+  { src: f10, w: 4000, h: 3000, author: { name: "Radu Mitu", avatar: a8 } },
+  { src: f7, w: 720, h: 960, author: owner },
 ];
 
+/** Recenzii preluate de pe Google Maps (Google oferă public cele mai relevante 5). */
 const reviews = [
-  {
-    text: "Servicii de calitate. Recomand cu încredere!",
-    date: "19 martie 2026",
-  },
-  {
-    text: "Am avut un prezon stricat și m-au rezolvat în mijlocul drumului. Mulțumesc și recomand cu încredere!",
-    date: "2 ianuarie 2026",
-  },
-  {
-    text: "Super rapid și eficient, calitate. Recomand!",
-    date: "29 decembrie 2025",
-  },
+  { name: "Florin Serban", avatar: a1, rating: 5, when: "acum 3 luni", text: "Preturi mici și calitate superioara!!! Super", url: "https://www.google.com/maps/contrib/116364624744404057671/reviews" },
+  { name: "Nicolae Balasa", avatar: a2, rating: 5, when: "acum 3 luni", text: "Super preturi...calitate buna!!!", url: "https://www.google.com/maps/contrib/104743814083269855919/reviews" },
+  { name: "Georgiana Alexandra Viloaica", avatar: a3, rating: 5, when: "acum 5 luni", text: "Profesioniști!\nRăspund rapid și rezolvă problema imediat!", url: "https://www.google.com/maps/contrib/102515383428966307254/reviews" },
+  { name: "A A", avatar: a4, rating: 5, when: "acum 3 ani", text: "Niște băieți de nota 10 lucrează ft rapid și calitativ", url: "https://www.google.com/maps/contrib/108273886275660952522/reviews" },
+  { name: "cristian enache", avatar: a5, rating: 3, when: "acum 11 luni", text: "Un singur om lucra la 4 mașini", url: "https://www.google.com/maps/contrib/108309229763994807963/reviews" },
 ];
+
+function Stars({ value, className = "size-4" }: { value: number; className?: string }) {
+  return (
+    <span className="inline-flex gap-0.5" aria-label={`${value} din 5 stele`}>
+      {[1, 2, 3, 4, 5].map((i) => (
+        <Star key={i} className={`${className} ${i <= Math.round(value) ? "fill-star text-star" : "fill-muted text-muted"}`} />
+      ))}
+    </span>
+  );
+}
+
+function Lightbox({ index, onClose, onMove }: { index: number; onClose: () => void; onMove: (d: number) => void }) {
+  const p = photos[index] ?? photos[0]!;
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") onMove(1);
+      if (e.key === "ArrowLeft") onMove(-1);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose, onMove]);
+
+  return (
+    <div className="gallery-lightbox fixed inset-0 z-[1000] flex items-center justify-center p-4" role="dialog" aria-modal="true" onClick={onClose}>
+      <button type="button" aria-label="Închide" className="gallery-lb-btn absolute right-4 top-4" onClick={onClose}>
+        <X className="size-5" />
+      </button>
+      <button type="button" aria-label="Fotografia anterioară" className="gallery-lb-btn absolute left-3 top-1/2 -translate-y-1/2 sm:left-6" onClick={(e) => { e.stopPropagation(); onMove(-1); }}>
+        <ChevronLeft className="size-6" />
+      </button>
+      <figure className="relative max-h-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+        <img src={p.src} alt={`Fotografie ${index + 1} de pe Google Maps`} className="max-h-[80svh] w-auto rounded-2xl object-contain" />
+        <figcaption className="mt-3 flex items-center justify-between gap-3 text-sm text-gallery-lb-foreground">
+          <span className="flex items-center gap-2">
+            <img src={p.author.avatar} alt="" className="size-7 rounded-full" />
+            Foto: {p.author.name}
+          </span>
+          <span className="tabular-nums opacity-70">{index + 1} / {photos.length}</span>
+        </figcaption>
+      </figure>
+      <button type="button" aria-label="Fotografia următoare" className="gallery-lb-btn absolute right-3 top-1/2 -translate-y-1/2 sm:right-6" onClick={(e) => { e.stopPropagation(); onMove(1); }}>
+        <ChevronRight className="size-6" />
+      </button>
+    </div>
+  );
+}
 
 export function InterventionsGallery() {
+  const [open, setOpen] = useState<number | null>(null);
+  const move = useCallback((d: number) => setOpen((i) => (i === null ? i : (i + d + photos.length) % photos.length)), []);
+  const close = useCallback(() => setOpen(null), []);
+  const dist = [5, 4, 3, 2, 1].map((s) => ({ s, n: reviews.filter((r) => r.rating === s).length }));
+
   return (
-    <section id="galerie" className="bg-surface py-14 sm:py-20">
+    <section id="galerie" className="gallery-section relative overflow-hidden py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-5">
-        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        {/* Antet + scor Google */}
+        <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-end">
           <div>
             <SectionLabel>Galerie · Intervenții reale</SectionLabel>
-            <h2 className="mt-3 max-w-2xl text-3xl font-extrabold sm:text-4xl">
-              Poze reale din intervențiile noastre.
+            <h2 className="mt-3 max-w-2xl text-3xl font-black leading-tight sm:text-5xl">
+              Lucrări reale, clienți <span className="text-brand">reali.</span>
             </h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-muted-foreground">
-              Imagini din teren, cu duba noastră și lucrări făcute direct la client, pe autostradă sau în oraș.
+            <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
+              Fotografii și recenzii direct de pe profilul nostru Google Maps — fără filtre, fără poze de stoc.
             </p>
           </div>
-          <a
-            href={MAPS}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl border border-border bg-card px-5 py-3 text-sm font-semibold transition-colors hover:bg-background"
-          >
-            <Camera className="size-4 text-brand" /> Vezi profilul Google <ExternalLink className="size-3.5" />
+
+          <a href={GOOGLE_URL} target="_blank" rel="noreferrer" className="gallery-score group block rounded-3xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-float">
+            <div className="flex items-center gap-5">
+              <div className="text-center">
+                <p className="text-6xl font-black leading-none tracking-tighter">{RATING.toFixed(1).replace(".", ",")}</p>
+                <Stars value={RATING} className="mt-2 size-4" />
+              </div>
+              <div className="flex-1 border-l border-border pl-5">
+                <p className="flex items-center gap-2 text-sm font-bold">
+                  <GoogleMark className="size-5" /> Recenzii Google
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  din <span className="font-bold text-foreground">{COUNT}</span> de recenzii
+                </p>
+                <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-brand">
+                  Vezi toate pe Google <ExternalLink className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                </p>
+              </div>
+            </div>
           </a>
         </div>
 
-        <div className="mt-9 grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
-          {photos.map((photo, index) => (
-            <a
-              key={photo.src}
-              href={MAPS}
-              target="_blank"
-              rel="noreferrer"
-              className={`group relative overflow-hidden rounded-lg bg-card shadow-card ${
-                index === 0 ? "col-span-2 aspect-[16/9] sm:row-span-2 sm:aspect-auto" : "aspect-[4/5]"
-              }`}
+        {/* Galerie bento */}
+        <div className="mt-12 columns-2 gap-3 sm:gap-4 md:columns-3 lg:columns-4">
+          {photos.map((p, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setOpen(i)}
+              className="gallery-tile group relative mb-3 block w-full overflow-hidden rounded-2xl sm:mb-4"
+              style={{ aspectRatio: `${p.w} / ${p.h}` }}
+              aria-label={`Deschide fotografia ${i + 1}`}
             >
-              <img
-                src={photo.src}
-                alt={photo.alt}
-                loading="lazy"
-                width={1600}
-                height={index === 2 || index === 3 || index === 7 ? 1200 : 2133}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              />
-              <span className="sr-only">Deschide fotografiile în Google Maps</span>
-            </a>
+              <img src={p.src} alt={`Lucrare Vulcanizare Dragodana, fotografie ${i + 1}`} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <span className="gallery-tile-shade absolute inset-0" aria-hidden="true" />
+              <span className="absolute inset-x-0 bottom-0 flex translate-y-2 items-center gap-2 p-3 text-xs font-semibold text-gallery-lb-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                <img src={p.author.avatar} alt="" className="size-6 rounded-full ring-2 ring-gallery-lb-foreground/60" />
+                {p.author.name}
+              </span>
+              <span className="absolute right-2.5 top-2.5 grid size-8 place-items-center rounded-full bg-card/85 text-foreground opacity-0 backdrop-blur transition-opacity group-hover:opacity-100">
+                <Camera className="size-4" />
+              </span>
+            </button>
           ))}
         </div>
 
-        <p className="mt-4 text-xs text-muted-foreground">
-          Fotografii publicate pe profilul Google Maps Vulcanizare Dragodana.
-        </p>
-
-        <div className="mt-10 border-t border-border pt-8 sm:mt-12 sm:pt-10">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <div className="flex items-center gap-2.5">
-                <div className="flex gap-0.5 text-brand" aria-label="5 stele din 5">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Star key={index} className="size-4 fill-current" aria-hidden="true" />
-                  ))}
-                </div>
-                <span className="text-sm font-extrabold">4,9 din 5</span>
-              </div>
-              <h3 className="mt-2 text-xl font-extrabold sm:text-2xl">Spus de clienții noștri</h3>
-              <p className="mt-1 text-sm text-muted-foreground">Recenzii publice de pe Google Maps.</p>
-            </div>
-            <a
-              href={MAPS}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-brand transition-opacity hover:opacity-75"
-            >
-              Vezi toate recenziile <ExternalLink className="size-3.5" />
+        {/* Recenzii */}
+        <div className="mt-16 grid gap-6 lg:grid-cols-[260px_1fr]">
+          <div className="rounded-3xl border border-border bg-card p-6 shadow-card">
+            <p className="text-sm font-bold">Ce spun clienții</p>
+            <ul className="mt-4 space-y-2">
+              {dist.map(({ s, n }) => (
+                <li key={s} className="flex items-center gap-2 text-xs">
+                  <span className="w-3 font-bold tabular-nums">{s}</span>
+                  <Star className="size-3 fill-star text-star" />
+                  <span className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
+                    <span className="block h-full rounded-full bg-star" style={{ width: `${(n / reviews.length) * 100}%` }} />
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <a href={GOOGLE_URL} target="_blank" rel="noreferrer" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-3 text-sm font-bold text-brand-foreground shadow-glow transition-transform active:scale-[0.98]">
+              <Star className="size-4 fill-current" /> Lasă o recenzie
             </a>
           </div>
 
-          <div className="mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 sm:grid sm:grid-cols-3 sm:overflow-visible sm:pb-0">
-            {reviews.map((review) => (
-              <figure
-                key={review.text}
-                className="min-w-[82%] snap-start rounded-lg border border-border bg-card p-5 shadow-card sm:min-w-0"
-              >
-                <Quote className="size-5 text-brand" aria-hidden="true" />
-                <blockquote className="mt-3 text-sm font-medium leading-relaxed">„{review.text}”</blockquote>
-                <figcaption className="mt-4 text-xs text-muted-foreground">Recenzie Google · {review.date}</figcaption>
-              </figure>
+          <div className="gallery-reviews -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:px-0">
+            {reviews.map((r) => (
+              <article key={r.name} className="relative flex w-[85%] shrink-0 snap-start flex-col rounded-3xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-float sm:w-[340px]">
+                <Quote className="absolute right-5 top-5 size-8 text-brand/15" />
+                <div className="flex items-center gap-3">
+                  <img src={r.avatar} alt={r.name} width={48} height={48} loading="lazy" className="size-12 rounded-full object-cover ring-2 ring-brand/20" />
+                  <div className="min-w-0">
+                    <p className="truncate font-bold capitalize">{r.name}</p>
+                    <p className="text-xs text-muted-foreground">{r.when}</p>
+                  </div>
+                </div>
+                <Stars value={r.rating} className="mt-4 size-4" />
+                <p className="mt-3 flex-1 whitespace-pre-line leading-relaxed">{r.text}</p>
+                <a href={r.url} target="_blank" rel="noreferrer" className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground">
+                  <GoogleMark className="size-3.5" /> Publicat pe Google
+                </a>
+              </article>
             ))}
           </div>
         </div>
       </div>
+
+      {open !== null && <Lightbox index={open} onClose={close} onMove={move} />}
     </section>
   );
 }
