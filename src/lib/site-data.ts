@@ -463,7 +463,7 @@ export const reviews = [
 export const faqs = [
   {
     q: "Cât costă o intervenție la Vulcanizare Dragodana?",
-    a: "Tariful depinde de tipul intervenției și de distanță și îl primești la telefon înainte de plecare, fără surprize. Sunați pentru o estimare exactă în 30 de secunde.",
+    a: "În atelierul din Dragodana, schimbul + echilibrarea pentru 4 cauciucuri costă 40 lei. Pentru intervențiile mobile, tariful depinde de tipul lucrării și de distanță și îl primești la telefon înainte de plecare, fără surprize.",
     category: "prețuri",
   },
   {

@@ -89,7 +89,7 @@ function Index() {
               </h1>
 
               <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-                Vulcanizare deschisă non-stop în Dragodana — zi și noapte, weekend și sărbători, pe Calea Găești 45. Vino la noi oricând sau venim noi la tine:
+                Vulcanizare deschisă non-stop în Dragodana — zi și noapte, weekend și sărbători, pe Calea Găești 45. Vino la noi oricând — schimb + echilibrare 4 cauciucuri doar 40 lei — sau venim noi la tine:
                 Găești, Târgoviște, Titu, A1 și până la 100 km.
               </p>
 
