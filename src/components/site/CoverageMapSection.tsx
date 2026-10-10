@@ -21,7 +21,7 @@ export function CoverageMapSection() {
   useEffect(() => {
     const el = barsRef.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && (setInView(true), io.disconnect()), { threshold: 0.4 });
+    const io = new IntersectionObserver(([e]) => e?.isIntersecting && (setInView(true), io.disconnect()), { threshold: 0.4 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
