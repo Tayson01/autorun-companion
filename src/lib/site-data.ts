@@ -43,9 +43,13 @@ export const services: Service[] = [
     desc: "Atelier deschis 24/24 pe Calea Găești 45, Dragodana — vii oricând, fără programare.",
     intro:
       "Atelierul nostru din Dragodana este deschis zi și noapte, inclusiv în weekend și de sărbători. Vii cu mașina oricând și rezolvăm pe loc pene, montaj, echilibrare sau schimb de anvelope.",
-    price: "Preț la telefon",
-    priceFrom: "Preț la telefon",
-    priceNote: "fără programare",
+    price: "40 lei",
+    priceFrom: "40 lei",
+    priceNote: "schimb + echilibrare 4 cauciucuri",
+    pricing: [
+      { label: "Schimb + echilibrare", value: "40 lei", note: "set de 4 cauciucuri" },
+      { label: "Reparație pană", value: "la telefon", note: "în funcție de defect" },
+    ],
     duration: "15–60 minute, în funcție de lucrare",
     bullets: [
       "Deschis 24/24, 7 zile din 7",
