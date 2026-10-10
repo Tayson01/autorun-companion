@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { Camera, ChevronLeft, ChevronRight, ExternalLink, Quote, Star, X } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { BadgeCheck, Camera, ChevronLeft, ChevronRight, ExternalLink, Quote, Star, X } from "lucide-react";
 
 import f1 from "@/assets/google/foto-1.jpg";
 import f2 from "@/assets/google/foto-2.jpg";
@@ -165,59 +165,109 @@ export function InterventionsGallery() {
           ))}
         </div>
 
-        {/* Recenzii */}
-        <div className="mt-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand">
-                <GoogleMark className="size-4" /> Recenzii verificate
-              </p>
-              <h3 className="mt-2 text-xl font-black sm:text-3xl">Ce spun clienții noștri</h3>
-            </div>
-            <a href={GOOGLE_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-[13px] font-bold text-brand-foreground shadow-glow transition-transform hover:-translate-y-0.5 sm:px-5 sm:py-2.5 sm:text-sm active:scale-[0.98]">
-              <Star className="size-4 fill-current" /> Lasă o recenzie
-            </a>
-          </div>
-
-          <div className="gallery-reviews -mx-5 mt-5 sm:mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:px-0">
-            {reviews.map((r, i) => {
-              const featured = i === 0;
-              return (
-                <article
-                  key={r.name}
-                  className={`group relative flex w-[78%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl sm:rounded-3xl sm:w-[340px] border p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-float ${
-                    featured
-                      ? "border-brand bg-brand text-brand-foreground shadow-glow"
-                      : "border-border bg-card shadow-card hover:border-brand/40"
-                  }`}
-                >
-                  <Quote className={`absolute -right-2 -top-2 size-16 sm:size-24 transition-transform duration-500 group-hover:rotate-12 ${featured ? "text-brand-foreground/15" : "text-brand/10"}`} />
-                  <div className="relative flex items-center gap-3">
-                    <img src={r.avatar} alt={r.name} width={48} height={48} loading="lazy" className={`size-10 sm:size-12 rounded-full object-cover ring-2 ${featured ? "ring-brand-foreground/60" : "ring-brand/20"}`} />
-                    <div className="min-w-0">
-                      <p className="truncate font-bold capitalize">{r.name}</p>
-                      <p className={`text-xs ${featured ? "text-brand-foreground/75" : "text-muted-foreground"}`}>{r.when}</p>
-                    </div>
-                  </div>
-                  <span className="relative mt-4 inline-flex gap-0.5" aria-label={`${r.rating} din 5 stele`}>
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <Star key={s} className="size-4 fill-star text-star" />
-                    ))}
-                  </span>
-                  <p className={`relative mt-3 flex-1 whitespace-pre-line leading-relaxed ${featured ? "text-lg font-black sm:text-3xl" : "text-base font-semibold sm:text-lg"}`}>
-                    „{r.text}”
-                  </p>
-                  <a href={r.url} target="_blank" rel="noreferrer" className={`relative mt-5 inline-flex items-center gap-1.5 text-xs font-semibold ${featured ? "text-brand-foreground/80 hover:text-brand-foreground" : "text-muted-foreground hover:text-foreground"}`}>
-                    <GoogleMark className="size-3.5" /> Publicat pe Google
-                  </a>
-                </article>
-              );
-            })}
-          </div>
-        </div>
+        <ReviewsCarousel />
       </div>
 
       {open !== null && <Lightbox index={open} onClose={close} onMove={move} />}
     </section>
+  );
+}
+
+function ReviewsCarousel() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const onScroll = () => {
+      const card = el.firstElementChild as HTMLElement | null;
+      if (!card) return;
+      const step = card.offsetWidth + 16;
+      setActive(Math.min(reviews.length - 1, Math.round(el.scrollLeft / step)));
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const go = (i: number) => {
+    const el = ref.current;
+    const card = el?.children[i] as HTMLElement | undefined;
+    if (el && card) el.scrollTo({ left: card.offsetLeft - el.offsetLeft, behavior: "smooth" });
+  };
+
+  return (
+    <div className="mt-16 overflow-hidden rounded-[2rem] border border-border bg-surface p-5 sm:p-8">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4">
+        <div className="min-w-0">
+          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand">
+            <GoogleMark className="size-4" /> Recenzii verificate
+          </p>
+          <h3 className="mt-2 text-2xl font-black leading-tight sm:text-3xl">Ce spun clienții noștri</h3>
+          <div className="mt-2 flex items-center gap-2 text-sm">
+            <span className="font-black">{RATING.toFixed(1).replace(".", ",")}</span>
+            <Stars value={RATING} className="size-3.5" />
+            <span className="text-muted-foreground">· {COUNT} recenzii</span>
+          </div>
+        </div>
+        <div className="hidden gap-2 sm:flex">
+          <button type="button" onClick={() => go(Math.max(0, active - 1))} aria-label="Recenzia anterioară" className="grid size-11 place-items-center rounded-full border border-border bg-card transition hover:border-brand hover:text-brand disabled:opacity-40" disabled={active === 0}>
+            <ChevronLeft className="size-5" />
+          </button>
+          <button type="button" onClick={() => go(Math.min(reviews.length - 1, active + 1))} aria-label="Recenzia următoare" className="grid size-11 place-items-center rounded-full border border-border bg-card transition hover:border-brand hover:text-brand disabled:opacity-40" disabled={active === reviews.length - 1}>
+            <ChevronRight className="size-5" />
+          </button>
+        </div>
+      </div>
+
+      <div ref={ref} className="gallery-reviews -mx-5 mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-5 pb-2 sm:mx-0 sm:px-0">
+        {reviews.map((r, i) => (
+          <article
+            key={r.name}
+            className={`group relative flex w-[82%] shrink-0 snap-start flex-col overflow-hidden rounded-3xl border bg-card p-5 shadow-card transition-all duration-500 sm:w-[340px] sm:p-6 ${
+              i === active ? "border-brand/50 shadow-float" : "border-border opacity-80"
+            }`}
+          >
+            <span aria-hidden className="absolute inset-x-0 top-0 h-1 bg-brand" />
+            <Quote className="absolute right-4 top-4 size-10 text-brand/10 transition-transform duration-500 group-hover:rotate-12" />
+            <div className="flex items-center gap-1" aria-label={`${r.rating} din 5 stele`}>
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} className="size-4 fill-star text-star" />
+              ))}
+            </div>
+            <p className="mt-4 flex-1 whitespace-pre-line text-base font-bold leading-snug sm:text-lg">„{r.text}”</p>
+            <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
+              <img src={r.avatar} alt={r.name} width={40} height={40} loading="lazy" className="size-10 shrink-0 rounded-full object-cover ring-2 ring-brand/20" />
+              <div className="min-w-0 flex-1">
+                <p className="flex items-center gap-1 truncate text-sm font-bold capitalize">
+                  {r.name} <BadgeCheck className="size-4 shrink-0 text-brand" />
+                </p>
+                <p className="text-xs text-muted-foreground">{r.when}</p>
+              </div>
+              <a href={r.url} target="_blank" rel="noreferrer" aria-label="Vezi pe Google" className="grid size-8 shrink-0 place-items-center rounded-full bg-surface transition hover:bg-muted">
+                <GoogleMark className="size-4" />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-5 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+        <div className="flex gap-1.5">
+          {reviews.map((r, i) => (
+            <button
+              key={r.name}
+              type="button"
+              onClick={() => go(i)}
+              aria-label={`Recenzia ${i + 1}`}
+              className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-6 bg-brand" : "w-2 bg-border"}`}
+            />
+          ))}
+        </div>
+        <a href={GOOGLE_URL} target="_blank" rel="noreferrer" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-bold text-brand-foreground shadow-glow transition-transform hover:-translate-y-0.5 active:scale-[0.98] sm:w-auto">
+          <Star className="size-4 fill-current" /> Lasă o recenzie pe Google
+        </a>
+      </div>
+    </div>
   );
 }
