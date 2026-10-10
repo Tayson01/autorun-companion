@@ -88,22 +88,14 @@ function Index() {
 
               <h1 className="mt-4 text-[2.1rem] font-black leading-[1.06] sm:text-5xl md:leading-[1.02]">
                 Vulcanizare <span className="text-brand">Dragodana</span>
-                <span className="vm-badge-glow vm-shine relative mt-4 inline-flex overflow-hidden rounded-2xl text-lg font-black tracking-wide sm:text-2xl">
-                  <span className="bg-brand px-3.5 py-1.5 text-brand-foreground">NON-STOP</span>
-                  <span className="flex items-center gap-1.5 bg-foreground px-3.5 py-1.5 tabular-nums text-background">
-                    <span className="relative flex size-2">
-                      <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />
-                      <span className="relative inline-flex size-2 rounded-full bg-success" />
-                    </span>
-                    24/24
-                  </span>
+                <span className="vm-badge-glow mt-4 inline-flex items-center gap-2 rounded-xl bg-brand px-3.5 py-1.5 text-lg font-black tracking-wide text-brand-foreground sm:text-2xl">
+                  NON-STOP <span className="vm-blink tabular-nums">24/24</span>
                 </span>
               </h1>
 
               <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-                Zi și noapte, weekend și sărbători, pe Calea Găești 45.{" "}
-                <span className="hidden sm:inline">Vino la noi oricând sau venim noi la tine: Găești, Târgoviște, Titu, A1 și până la 100 km.</span>
-                <span className="sm:hidden">Venim la tine până la 100 km.</span>
+                Vulcanizare deschisă non-stop în Dragodana — zi și noapte, weekend și sărbători, pe Calea Găești 45. Vino la noi oricând sau venim noi la tine:
+                Găești, Târgoviște, Titu, A1 și până la 100 km.
               </p>
 
               <div className="mt-5 grid gap-2.5 sm:mt-8 sm:flex sm:flex-wrap sm:gap-3">
