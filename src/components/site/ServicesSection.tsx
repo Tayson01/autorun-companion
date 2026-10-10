@@ -1,21 +1,38 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, Check, Clock, MapPin, Phone, ShieldCheck, Tag, Zap } from "lucide-react";
-
-import { PHONE, TEL, services } from "@/lib/site-data";
-import { ServiceIcon } from "@/components/site/ServiceIcon";
-import { SectionLabel } from "@/components/site/ui";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Building2,
+  Car,
+  Check,
+  Clock,
+  MapPin,
+  Moon,
+  PhoneCall,
+  Phone,
+  ShieldCheck,
+  Sparkles,
+  Truck,
+  Wrench,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-type Category = "all" | "urgente" | "montaj" | "camioane";
+import { ADDRESS, MAPS, PHONE, TEL, services } from "@/lib/site-data";
+import { ServiceIcon } from "@/components/site/ServiceIcon";
+import { SectionLabel } from "@/components/site/ui";
+
+type Category = "all" | "atelier" | "urgente" | "montaj" | "camioane";
 
 const categories: { id: Category; label: string }[] = [
-  { id: "all", label: "Toate serviciile" },
-  { id: "urgente", label: "Urgențe" },
+  { id: "all", label: "Toate" },
+  { id: "atelier", label: "În atelier" },
+  { id: "urgente", label: "Urgențe pe drum" },
   { id: "montaj", label: "Montaj & întreținere" },
   { id: "camioane", label: "Camioane & flote" },
 ];
 
 const serviceCategory: Record<string, Category> = {
+  "vulcanizare-atelier-non-stop": "atelier",
   "asistenta-rutiera": "urgente",
   "reparatii-pe-loc": "urgente",
   "transport-auto": "urgente",
@@ -24,38 +41,67 @@ const serviceCategory: Record<string, Category> = {
   "vulcanizare-camioane": "camioane",
 };
 
-const featuredSlug = "asistenta-rutiera";
+const steps = [
+  { icon: PhoneCall, title: "Ne suni", text: "Răspundem 24/24, inclusiv noaptea și în sărbători." },
+  { icon: MapPin, title: "Vii sau venim", text: "Atelier pe Calea Găești 45 sau echipa mobilă până la 100 km." },
+  { icon: Wrench, title: "Rezolvăm", text: "Utilaje profesionale, echilibrare electronică, piese verificate." },
+  { icon: ShieldCheck, title: "Pleci liniștit", text: "Verificăm presiunea și strângerea înainte să pleci." },
+];
 
 export function ServicesSection() {
   const [active, setActive] = useState<Category>("all");
 
-  const filtered = useMemo(
+  const atelier = services.find((s) => s.slug === "vulcanizare-atelier-non-stop")!;
+  const mobile = services.find((s) => s.slug === "asistenta-rutiera")!;
+
+  const grid = useMemo(
     () =>
       services.filter(
-        (s) => active === "all" || serviceCategory[s.slug] === active,
+        (s) =>
+          s.slug !== atelier.slug &&
+          s.slug !== mobile.slug &&
+          (active === "all" || serviceCategory[s.slug] === active),
       ),
-    [active],
+    [active, atelier.slug, mobile.slug],
   );
 
-  const featured = services.find((s) => s.slug === featuredSlug)!;
-  const rest = filtered.filter((s) => s.slug !== featuredSlug);
-  const showFeatured = active === "all" || active === "urgente";
+  const showAtelier = active === "all" || active === "atelier";
+  const showMobile = active === "all" || active === "urgente";
 
   return (
-    <section id="servicii" className="mx-auto max-w-6xl px-5 py-14 sm:py-20">
-      <SectionLabel>Servicii</SectionLabel>
-      <div className="mt-3 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h2 className="max-w-xl text-3xl font-extrabold sm:text-4xl tracking-tight">
-            Tot ce ai nevoie, într-un singur loc.
-          </h2>
-          <p className="mt-4 max-w-2xl text-muted-foreground">
-            De la pene neașteptate pe drum până la întreținere programată — echipa noastră din
-            Dragodana se ocupă de tot.
-          </p>
+    <section id="servicii" className="relative overflow-hidden py-16 sm:py-24">
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[520px] bg-gradient-to-b from-brand-soft/50 to-transparent" />
+      <div className="relative mx-auto max-w-6xl px-5">
+        {/* Header */}
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+          <div>
+            <SectionLabel>Servicii · Non-stop în Dragodana</SectionLabel>
+            <h2 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
+              Atelier deschis <span className="text-brand">24/24</span>.
+              <br className="hidden sm:block" /> Echipă mobilă la tine.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base text-muted-foreground sm:text-lg">
+              Vii la noi pe Calea Găești oricând, zi sau noapte — sau venim noi la tine, pe A1, DN7,
+              DN71, DN61 și până la 100 km de Dragodana.
+            </p>
+          </div>
+          <div className="grid grid-cols-3 gap-3">
+            {[
+              { k: "24/24", v: "deschis non-stop", icon: Moon },
+              { k: "40 lei", v: "schimb + echilibrare 4 roți", icon: Sparkles },
+              { k: "100 km", v: "rază intervenții", icon: Car },
+            ].map((s) => (
+              <div key={s.k} className="rounded-2xl border border-border bg-card p-4 shadow-card">
+                <s.icon className="size-4 text-brand" />
+                <p className="mt-3 text-xl font-black tracking-tight sm:text-2xl">{s.k}</p>
+                <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{s.v}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        {/* Tabs */}
+        <div className="mt-10 flex gap-2 overflow-x-auto pb-1">
           {categories.map((c) => {
             const on = active === c.id;
             return (
@@ -64,9 +110,9 @@ export function ServicesSection() {
                 type="button"
                 onClick={() => setActive(c.id)}
                 aria-pressed={on}
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition-all ${
+                className={`shrink-0 rounded-full px-5 py-2.5 text-sm font-semibold transition-all ${
                   on
-                    ? "bg-brand text-brand-foreground shadow-card"
+                    ? "bg-foreground text-background shadow-card"
                     : "border border-border bg-card text-muted-foreground hover:border-brand/40 hover:text-foreground"
                 }`}
               >
@@ -75,40 +121,83 @@ export function ServicesSection() {
             );
           })}
         </div>
-      </div>
 
-      {showFeatured && (
-        <div className="group relative mt-10 overflow-hidden rounded-[28px] bg-gradient-to-br from-brand/30 via-brand/5 to-transparent p-[1.5px] shadow-card">
-          <div className="relative overflow-hidden rounded-[26px] border border-border/60 bg-card">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-24 -top-28 size-[320px] rounded-full bg-brand/12 blur-3xl transition-opacity duration-500 group-hover:opacity-80"
-            />
-
-            <div className="relative grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
-              <div className="p-6 sm:p-8 md:p-10">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-brand">
-                    <Zap className="size-3" /> Cel mai solicitat
+        {/* Two pillars */}
+        {(showAtelier || showMobile) && (
+          <div className={`mt-6 grid gap-5 ${showAtelier && showMobile ? "lg:grid-cols-2" : ""}`}>
+            {showAtelier && (
+              <article className="group relative overflow-hidden rounded-[28px] bg-brand p-7 text-brand-foreground shadow-card sm:p-9">
+                <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 size-72 rounded-full bg-brand-foreground/10 blur-2xl" />
+                <div aria-hidden className="pointer-events-none absolute -bottom-24 -left-10 size-64 rounded-full bg-brand-foreground/10 blur-3xl" />
+                <div className="relative flex items-start justify-between gap-4">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-foreground/15 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide">
+                    <Building2 className="size-3.5" /> În atelier · non-stop
                   </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[11px] font-semibold text-muted-foreground">
-                    <Clock className="size-3 text-brand" /> {featured.duration}
+                  <span className="flex size-12 items-center justify-center rounded-2xl bg-brand-foreground text-brand">
+                    <ServiceIcon name={atelier.icon} className="size-6" />
                   </span>
                 </div>
+                <h3 className="relative mt-6 text-3xl font-black tracking-tight sm:text-4xl">{atelier.title}</h3>
+                <p className="relative mt-3 max-w-lg text-sm leading-relaxed opacity-90">{atelier.intro}</p>
 
-                <span className="mt-6 flex size-14 items-center justify-center rounded-2xl bg-brand text-brand-foreground shadow-card">
-                  <ServiceIcon name={featured.icon} className="size-7" />
-                </span>
+                <div className="relative mt-6 flex items-end gap-3">
+                  <p className="text-6xl font-black leading-none tracking-tighter sm:text-7xl">40</p>
+                  <div className="pb-1">
+                    <p className="text-xl font-black leading-none">lei</p>
+                    <p className="mt-1 text-xs opacity-85">schimb + echilibrare · 4 roți</p>
+                  </div>
+                </div>
 
-                <h3 className="mt-5 text-2xl font-extrabold tracking-tight md:text-3xl">
-                  {featured.title}
-                </h3>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                  {featured.intro}
-                </p>
+                <ul className="relative mt-6 grid gap-2 sm:grid-cols-2">
+                  {atelier.bullets.slice(0, 4).map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-sm">
+                      <Check className="mt-0.5 size-4 shrink-0" />
+                      <span className="leading-snug">{b}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-                  {featured.bullets.map((b) => (
+                <div className="relative mt-7 flex flex-wrap gap-3">
+                  <a
+                    href={MAPS}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-brand-foreground px-5 py-3 text-sm font-bold text-brand transition-transform hover:-translate-y-0.5"
+                  >
+                    <MapPin className="size-4" /> {ADDRESS}
+                  </a>
+                  <Link
+                    to="/servicii/$slug"
+                    params={{ slug: atelier.slug }}
+                    className="inline-flex items-center gap-2 rounded-xl border border-brand-foreground/30 px-5 py-3 text-sm font-semibold transition-colors hover:bg-brand-foreground/10"
+                  >
+                    Detalii <ArrowRight className="size-4" />
+                  </Link>
+                </div>
+              </article>
+            )}
+
+            {showMobile && (
+              <article className="group relative overflow-hidden rounded-[28px] border border-border bg-card p-7 shadow-card sm:p-9">
+                <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 size-80 rounded-full bg-brand/10 blur-3xl transition-opacity group-hover:opacity-70" />
+                <div className="relative flex items-start justify-between gap-4">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-brand">
+                    <Truck className="size-3.5" /> Mobil · până la 100 km
+                  </span>
+                  <span className="flex size-12 items-center justify-center rounded-2xl bg-brand text-brand-foreground">
+                    <ServiceIcon name={mobile.icon} className="size-6" />
+                  </span>
+                </div>
+                <h3 className="relative mt-6 text-3xl font-black tracking-tight sm:text-4xl">{mobile.title}</h3>
+                <p className="relative mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">{mobile.intro}</p>
+
+                <div className="relative mt-6 inline-flex items-center gap-2 rounded-2xl border border-border bg-surface px-4 py-3">
+                  <Clock className="size-4 text-brand" />
+                  <span className="text-sm font-bold">{mobile.duration}</span>
+                </div>
+
+                <ul className="relative mt-6 grid gap-2 sm:grid-cols-2">
+                  {mobile.bullets.slice(0, 4).map((b) => (
                     <li key={b} className="flex items-start gap-2 text-sm text-foreground/90">
                       <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-soft">
                         <Check className="size-3 text-brand" />
@@ -118,124 +207,98 @@ export function ServicesSection() {
                   ))}
                 </ul>
 
-                <div className="mt-7 flex flex-wrap items-center gap-3">
-                  <Link
-                    to="/servicii/$slug"
-                    params={{ slug: featured.slug }}
-                    className="inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground shadow-card transition-all hover:brightness-110 hover:-translate-y-0.5"
-                  >
-                    Detalii complete <ArrowRight className="size-4" />
-                  </Link>
+                <div className="relative mt-7 flex flex-wrap gap-3">
                   <a
                     href={`tel:${TEL}`}
-                    className="vm-callfx vm-callcta inline-flex items-center gap-2 whitespace-nowrap rounded-xl border border-border bg-card px-5 py-3 text-sm font-bold transition-colors hover:bg-surface"
+                    className="vm-callfx vm-callcta inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-bold text-brand-foreground shadow-card transition-transform hover:-translate-y-0.5"
                   >
-                    <Phone className="size-4 shrink-0 text-brand" /> <span className="tabular-nums">{PHONE}</span>
+                    <Phone className="size-4" /> <span className="tabular-nums">{PHONE}</span>
                   </a>
+                  <Link
+                    to="/servicii/$slug"
+                    params={{ slug: mobile.slug }}
+                    className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold transition-colors hover:bg-surface"
+                  >
+                    Detalii <ArrowRight className="size-4" />
+                  </Link>
                 </div>
-              </div>
+              </article>
+            )}
+          </div>
+        )}
 
-              <div className="relative border-t border-border/60 bg-gradient-to-br from-brand-soft/40 via-brand-soft/20 to-transparent p-6 sm:p-8 md:p-10 lg:border-l lg:border-t-0">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                  <Tag className="size-3.5 text-brand" /> Prețuri clare
-                </div>
-
-                <p className="mt-2 text-4xl font-black tracking-tight text-brand sm:text-5xl">
-                  {featured.priceFrom}
-                </p>
-                <p className="text-sm font-medium text-muted-foreground">
-                  {featured.priceNote}
-                </p>
-
-                <div className="mt-6 space-y-2">
-                  {featured.pricing?.map((p) => (
-                    <div
-                      key={p.label}
-                      className="flex items-center justify-between gap-3 rounded-2xl border border-border/70 bg-card/80 px-4 py-3 backdrop-blur-sm"
-                    >
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold">{p.label}</p>
-                        {p.note && <p className="text-[11px] text-muted-foreground">{p.note}</p>}
-                      </div>
-                      <p className="shrink-0 text-sm font-black text-brand">{p.value}</p>
-                    </div>
+        {/* Grid */}
+        {grid.length > 0 && (
+          <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {grid.map((s, i) => (
+              <Link
+                key={s.slug}
+                to="/servicii/$slug"
+                params={{ slug: s.slug }}
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-card"
+              >
+                <span aria-hidden className="absolute right-5 top-3 text-6xl font-black tracking-tighter text-foreground/5 transition-colors group-hover:text-brand/15">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="relative flex size-12 items-center justify-center rounded-2xl bg-brand-soft text-brand transition-all group-hover:scale-110 group-hover:bg-brand group-hover:text-brand-foreground">
+                  <ServiceIcon name={s.icon} className="size-6" />
+                </span>
+                <h3 className="relative mt-5 text-lg font-bold">{s.title}</h3>
+                <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                <ul className="relative mt-4 space-y-2">
+                  {s.bullets.slice(0, 3).map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-xs text-muted-foreground">
+                      <Check className="mt-0.5 size-3.5 shrink-0 text-brand" />
+                      <span>{b}</span>
+                    </li>
                   ))}
+                </ul>
+                <div className="relative mt-auto flex items-center justify-between border-t border-border pt-4 text-xs">
+                  <span className="inline-flex items-center gap-1.5 font-medium text-muted-foreground">
+                    <Clock className="size-3.5 text-brand" /> {s.duration}
+                  </span>
+                  <span className="flex size-8 items-center justify-center rounded-full border border-border transition-all group-hover:border-brand group-hover:bg-brand group-hover:text-brand-foreground">
+                    <ArrowUpRight className="size-4" />
+                  </span>
                 </div>
-
-                <div className="mt-6 flex items-center gap-2 rounded-2xl border border-brand/20 bg-brand/10 px-4 py-3 text-xs text-brand">
-                  <ShieldCheck className="size-4 shrink-0" />
-                  <span className="font-semibold">Preț final comunicat înainte de plecare. Fără costuri ascunse.</span>
-                </div>
-
-                <div className="mt-5 flex items-start gap-2 text-xs text-muted-foreground">
-                  <MapPin className="mt-0.5 size-3.5 shrink-0 text-brand" />
-                  <span>Acoperim A1, DN7, DN71, DN61 și o rază de 100 km.</span>
-                </div>
-              </div>
-            </div>
+              </Link>
+            ))}
           </div>
-        </div>
-      )}
+        )}
 
-      <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {rest.map((s) => (
-          <div
-            key={s.slug}
-            className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-card"
+        {/* Process */}
+        <div className="mt-14 rounded-[28px] border border-border bg-card p-6 sm:p-9">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand">Cum lucrăm</p>
+          <h3 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl">De la telefon la drum, în 4 pași.</h3>
+          <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((st, i) => (
+              <li key={st.title} className="relative">
+                <div className="flex items-center gap-3">
+                  <span className="flex size-11 items-center justify-center rounded-2xl bg-brand text-brand-foreground">
+                    <st.icon className="size-5" />
+                  </span>
+                  <span className="text-xs font-black text-muted-foreground">PAS {i + 1}</span>
+                </div>
+                <p className="mt-4 font-bold">{st.title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{st.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-6 flex flex-col items-start justify-between gap-5 rounded-[28px] bg-foreground p-7 text-background sm:flex-row sm:items-center sm:p-9">
+          <div>
+            <p className="text-2xl font-black tracking-tight sm:text-3xl">Ai o pană chiar acum?</p>
+            <p className="mt-1 text-sm opacity-75">Suntem deschiși non-stop. Sună și îți spunem imediat cât durează.</p>
+          </div>
+          <a
+            href={`tel:${TEL}`}
+            className="vm-callfx inline-flex items-center gap-2 whitespace-nowrap rounded-xl bg-brand px-6 py-4 text-base font-black text-brand-foreground shadow-card transition-transform hover:-translate-y-0.5"
           >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-brand/10 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
-            />
-            <div className="relative flex items-start justify-between">
-              <span className="flex size-11 items-center justify-center rounded-2xl bg-brand-soft text-brand transition-colors group-hover:bg-brand group-hover:text-brand-foreground">
-                <ServiceIcon name={s.icon} />
-              </span>
-              <span className="rounded-full border border-border px-2.5 py-1 text-[11px] font-semibold text-muted-foreground">
-                {s.price}
-              </span>
-            </div>
-
-            <h3 className="relative mt-5 text-lg font-bold">{s.title}</h3>
-            <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-
-            <div className="relative mt-4 flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-              <Clock className="size-3.5 text-brand" /> {s.duration}
-            </div>
-
-            <ul className="relative mt-4 space-y-2 border-t border-border pt-4">
-              {s.bullets.slice(0, 3).map((b) => (
-                <li key={b} className="flex items-start gap-2 text-xs text-muted-foreground">
-                  <span className="mt-0.5 size-1.5 shrink-0 rounded-full bg-brand" />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              to="/servicii/$slug"
-              params={{ slug: s.slug }}
-              className="relative mt-5 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-brand transition-all hover:gap-2.5"
-            >
-              Află mai mult <ArrowRight className="size-4" />
-            </Link>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-brand p-7 text-brand-foreground">
-        <div>
-          <p className="text-lg font-bold">Nu găsești ce cauți?</p>
-          <p className="text-sm opacity-90">
-            Sună-ne și îți oferim o soluție personalizată în câteva minute.
-          </p>
+            <Phone className="size-5" /> <span className="tabular-nums">{PHONE}</span>
+          </a>
         </div>
-        <a
-          href={`tel:${TEL}`}
-          className="inline-flex items-center gap-2 rounded-xl bg-card px-5 py-3 text-sm font-semibold text-foreground transition-transform hover:-translate-y-0.5"
-        >
-          <Phone className="size-4" /> Contactează-ne
-        </a>
       </div>
     </section>
   );
