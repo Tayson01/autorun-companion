@@ -108,7 +108,7 @@ function AnvelopeSH() {
 
   const activeCat = categories.find((c) => c.id === cat)!;
   const sel =
-    "h-14 w-full appearance-none rounded-2xl border-2 border-border bg-background px-3 text-center text-xl font-black tabular-nums outline-none transition-colors focus:border-brand sm:text-2xl";
+    "h-14 w-full appearance-none rounded-2xl border-2 border-border bg-background px-3 text-center text-xl font-black text-foreground tabular-nums outline-none transition-colors focus:border-brand sm:text-2xl";
 
   return (
     <main className="overflow-x-hidden">
