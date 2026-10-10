@@ -37,6 +37,30 @@ export type FAQ = {
 
 export const services: Service[] = [
   {
+    slug: "vulcanizare-atelier-non-stop",
+    icon: "wrench",
+    title: "Vulcanizare non-stop în atelier",
+    desc: "Atelier deschis 24/24 pe Calea Găești 45, Dragodana — vii oricând, fără programare.",
+    intro:
+      "Atelierul nostru din Dragodana este deschis zi și noapte, inclusiv în weekend și de sărbători. Vii cu mașina oricând și rezolvăm pe loc pene, montaj, echilibrare sau schimb de anvelope.",
+    price: "Preț la telefon",
+    priceFrom: "Preț la telefon",
+    priceNote: "fără programare",
+    duration: "15–60 minute, în funcție de lucrare",
+    bullets: [
+      "Deschis 24/24, 7 zile din 7",
+      "Montaj, demontaj și echilibrare electronică",
+      "Reparații pene, valve și senzori de presiune",
+      "Autoturisme, SUV-uri, utilitare și camioane",
+    ],
+    steps: [
+      "Vii la Calea Găești 45, Dragodana, oricând",
+      "Verificăm anvelopele și îți spunem prețul",
+      "Facem lucrarea pe loc",
+      "Plătești cu cardul, transfer sau numerar",
+    ],
+  },
+  {
     slug: "asistenta-rutiera",
     icon: "lifebuoy",
     title: "Asistență rutieră 24/7",
