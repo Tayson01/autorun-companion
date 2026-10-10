@@ -19,7 +19,6 @@ import {
   Tractor,
 } from "lucide-react";
 
-import { PriceHighlight } from "@/components/site/PriceHighlight";
 import { ADDRESS, MAPS, PHONE, TEL, WA } from "@/lib/site-data";
 import s1 from "@/assets/stoc/stoc-1.jpg";
 import s2 from "@/assets/stoc/stoc-2.jpg";
@@ -75,7 +74,7 @@ const seasons = [
 
 const faqs = [
   { q: "Cum aflu dacă aveți dimensiunea mea?", a: "Alege dimensiunea mai sus și apasă pe WhatsApp, sau sună-ne. Îți spunem pe loc ce avem și îți putem trimite poze cu anvelopele." },
-  { q: "Montați anvelopele pe loc?", a: "Da. Le montăm și echilibrăm în atelierul din Dragodana, non-stop. Schimbul + echilibrarea pentru 4 roți costă 40 lei." },
+  { q: "Trebuie să le și montez la voi?", a: "Da. Dacă vrei, da — în atelierul din Dragodana, non-stop. Le poți lua și doar la vânzare." },
   { q: "Pot vedea anvelopele înainte să le cumpăr?", a: "Sigur. Vino la atelier pe Calea Găești 45 oricând, le vezi, verifici profilul și alegi." },
   { q: "Cât costă anvelopele SH?", a: "Prețul depinde de dimensiune, marcă și cât profil mai au. Sună-ne sau scrie-ne pe WhatsApp și îți spunem prețul exact." },
   { q: "Aveți și anvelope pentru camioane sau utilaje agricole?", a: "Întreabă-ne la telefon cu dimensiunea exactă și verificăm stocul pentru tine." },
@@ -131,10 +130,10 @@ function AnvelopeSH() {
             </span>
             <h1 className="mt-5 text-[2.6rem] font-black leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl">
               Anvelope <span className="text-brand">SH</span>
-              <span className="block">montate pe loc.</span>
+              <span className="block">la preț bun.</span>
             </h1>
             <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-              Vară, iarnă și all-season, sortate pe dimensiuni în atelierul nostru de pe Calea Găești 45. Alegi, montăm și echilibrăm imediat — zi și noapte.
+              Vindem anvelope second hand de vară, iarnă și all-season, sortate pe dimensiuni, în Dragodana, pe Calea Găești 45. Ne spui mărimea, îți trimitem poze și prețul, vii și le iei.
             </p>
             <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap">
               <a href="#cauta" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-brand px-6 text-base font-black text-brand-foreground shadow-glow transition-transform hover:-translate-y-0.5">
@@ -146,7 +145,7 @@ function AnvelopeSH() {
             </div>
             <dl className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
               {[
-                { k: "40 lei", v: "montaj + echilibrare 4 roți" },
+                { k: "3 sezoane", v: "vară, iarnă, all-season" },
                 { k: "24/24", v: "deschis non-stop" },
                 { k: "R13–R22", v: "întreabă orice mărime" },
               ].map((s) => (
@@ -170,11 +169,50 @@ function AnvelopeSH() {
               </button>
             ))}
             <div className="absolute -bottom-4 -left-3 rotate-[-4deg] rounded-2xl bg-brand px-5 py-3 text-brand-foreground shadow-float sm:-left-6">
-              <p className="text-[10px] font-black uppercase tracking-widest opacity-90">Montaj pe loc</p>
-              <p className="text-2xl font-black leading-none">40 lei / set</p>
+              <p className="text-[10px] font-black uppercase tracking-widest opacity-90">Vânzare directă</p>
+              <p className="text-2xl font-black leading-none">Preț pe WhatsApp</p>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* MARQUEE */}
+      <div className="overflow-hidden border-y border-border bg-foreground py-4 text-background">
+        <div className="vm-marquee flex w-max gap-10 whitespace-nowrap">
+          {[0, 1].map((k) => (
+            <div key={k} className="flex gap-10" aria-hidden={k === 1}>
+              {["175/65 R14", "185/65 R15", "195/65 R15", "205/55 R16", "215/55 R18", "225/45 R17", "235/55 R19", "205/65 R16C", "Vară", "Iarnă", "All-season"].map((t) => (
+                <span key={t} className="inline-flex items-center gap-3 text-lg font-black tabular-nums">
+                  <span className="size-2 rounded-full bg-brand" /> {t}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* HOW TO BUY */}
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+        <p className="text-xs font-black uppercase tracking-widest text-brand">Cum cumperi</p>
+        <h2 className="mt-2 max-w-2xl text-3xl font-black tracking-tight sm:text-5xl">Anvelopele tale în 4 pași simpli.</h2>
+        <ol className="relative mt-10 grid gap-4 md:grid-cols-4">
+          <div aria-hidden className="absolute left-0 right-0 top-8 hidden h-0.5 bg-gradient-to-r from-brand via-brand/40 to-transparent md:block" />
+          {[
+            { i: Search, t: "Alegi mărimea", d: "Din căutarea de mai jos sau ne trimiți o poză cu anvelopa." },
+            { i: MessageCircle, t: "Primești poze și preț", d: "Îți arătăm exact anvelopele pe care le avem." },
+            { i: BadgeCheck, t: "Ți le punem deoparte", d: "Le păstrăm pentru tine până ajungi." },
+            { i: MapPin, t: "Vii și le iei", d: "Calea Găești 45, Dragodana — deschis non-stop." },
+          ].map((x, idx) => (
+            <li key={x.t} className="group relative rounded-3xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-brand/40 hover:shadow-float">
+              <span className="relative flex size-16 items-center justify-center rounded-2xl bg-brand text-brand-foreground shadow-glow transition-transform group-hover:rotate-6">
+                <x.i className="size-7" />
+                <span className="absolute -right-2 -top-2 flex size-7 items-center justify-center rounded-full border-2 border-card bg-foreground text-xs font-black text-background">{idx + 1}</span>
+              </span>
+              <p className="mt-5 text-lg font-black">{x.t}</p>
+              <p className="mt-1.5 text-sm text-muted-foreground">{x.d}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* SIZE FINDER */}
@@ -247,7 +285,7 @@ function AnvelopeSH() {
                     {[
                       ["Sezon", seasons.find((s) => s.id === season)!.label],
                       ["Bucăți", String(qty)],
-                      ["Montaj + echilibrare", qty === 4 ? "40 lei" : "la telefon"],
+                      ["Preț", "îl primești pe WhatsApp"],
                       ["Unde", "Calea Găești 45, non-stop"],
                     ].map(([k, v]) => (
                       <div key={k} className="flex justify-between gap-4 border-b border-dashed border-background/20 pb-3">
@@ -358,7 +396,7 @@ function AnvelopeSH() {
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { i: BadgeCheck, t: "Vezi înainte să cumperi", d: "Verifici profilul și starea anvelopei pe loc, la atelier." },
-              { i: Wrench, t: "Montaj imediat", d: "Schimb + echilibrare 4 roți la 40 lei, fără programare." },
+              { i: Wrench, t: "Le iei sau ți le montăm", d: "Le iei acasă sau, dacă vrei, ți le montăm pe loc în atelier." },
               { i: Clock, t: "Non-stop", d: "Vino zi sau noapte, inclusiv weekend și sărbători." },
               { i: MessageCircle, t: "Răspuns rapid", d: "Scrie-ne dimensiunea și îți spunem imediat ce avem." },
             ].map((x, idx) => (
@@ -379,6 +417,37 @@ function AnvelopeSH() {
                 <div>
                   <p className="text-lg font-black">{s.label}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{s.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TREAD DEPTH */}
+      <section className="mx-auto max-w-6xl px-5 pt-16 sm:pt-24">
+        <div className="grid gap-8 rounded-[32px] border border-border bg-card p-6 shadow-card sm:p-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+          <div>
+            <p className="text-xs font-black uppercase tracking-widest text-brand">Ce verifici la o anvelopă SH</p>
+            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">Profilul contează.</h2>
+            <p className="mt-3 text-muted-foreground">
+              Minimul legal în România este 1,6 mm (iarna, pe zăpadă, 4 mm). Când vii la noi, măsurăm profilul împreună, ca să știi exact ce cumperi.
+            </p>
+          </div>
+          <div className="space-y-3">
+            {[
+              { mm: "7–8 mm", l: "Ca noi", w: "100%" },
+              { mm: "5–6 mm", l: "Foarte bune", w: "75%" },
+              { mm: "4 mm", l: "Minim recomandat iarna", w: "50%" },
+              { mm: "1,6 mm", l: "Limita legală", w: "20%" },
+            ].map((t, i) => (
+              <div key={t.mm} className="rounded-2xl border border-border bg-background p-4">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="font-black tabular-nums">{t.mm}</span>
+                  <span className="text-muted-foreground">{t.l}</span>
+                </div>
+                <div className="mt-2.5 h-2.5 overflow-hidden rounded-full bg-muted">
+                  <div className={`h-full rounded-full ${i === 3 ? "bg-muted-foreground" : "bg-brand"}`} style={{ width: t.w }} />
                 </div>
               </div>
             ))}
@@ -409,7 +478,6 @@ function AnvelopeSH() {
         </div>
       </section>
 
-      <PriceHighlight />
 
       {/* FAQ */}
       <section className="mx-auto max-w-3xl px-5 py-16 sm:py-24">
