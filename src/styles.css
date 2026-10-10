@@ -804,3 +804,5 @@
 @keyframes vm-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .vm-marquee { animation: vm-marquee 30s linear infinite; }
 .vm-marquee:hover { animation-play-state: paused; }
+@keyframes vm-progress { from { width: 0; } to { width: 100%; } }
+.vm-progress { animation: vm-progress 2.6s linear; }
