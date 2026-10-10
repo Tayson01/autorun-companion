@@ -9,7 +9,7 @@ import f6 from "@/assets/google/foto-6.jpg";
 import f7 from "@/assets/google/foto-7.jpg";
 import f8 from "@/assets/google/foto-8.jpg";
 import f9 from "@/assets/google/foto-9.jpg";
-import f10 from "@/assets/google/foto-10.jpg";
+import f11 from "@/assets/google/foto-11.jpg";
 import a1 from "@/assets/google/avatar-1.png";
 import a2 from "@/assets/google/avatar-2.png";
 import a3 from "@/assets/google/avatar-3.png";
@@ -17,7 +17,6 @@ import a4 from "@/assets/google/avatar-4.png";
 import a10 from "@/assets/google/avatar-10.png";
 import a6 from "@/assets/google/avatar-6.png";
 import a7 from "@/assets/google/avatar-7.png";
-import a8 from "@/assets/google/avatar-8.png";
 import a9 from "@/assets/google/avatar-9.png";
 import { GoogleMark } from "@/components/site/GoogleMark";
 import { SectionLabel } from "@/components/site/ui";
@@ -37,7 +36,7 @@ const photos = [
   { src: f9, w: 3264, h: 1468, author: { name: "Cosmin Cox", avatar: a7 } },
   { src: f5, w: 860, h: 746, author: owner },
   { src: f6, w: 720, h: 960, author: owner },
-  { src: f10, w: 4000, h: 3000, author: { name: "Radu Mitu", avatar: a8 } },
+  { src: f11, w: 684, h: 912, author: owner },
   { src: f7, w: 720, h: 960, author: owner },
 ];
 
