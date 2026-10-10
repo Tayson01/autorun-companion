@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { ChevronRight, Clock, MapPin, Phone } from "lucide-react";
 
 import { PHONE, TEL, mapRings, zones } from "@/lib/site-data";
@@ -16,6 +16,15 @@ const stats = [
 export function CoverageMapSection() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+  const barsRef = useRef<HTMLUListElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = barsRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => e.isIntersecting && (setInView(true), io.disconnect()), { threshold: 0.4 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
     <section id="harta" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-12 sm:py-20">
@@ -67,17 +76,22 @@ export function CoverageMapSection() {
             <p className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-muted-foreground">
               <Clock className="size-3.5 text-brand" /> Timp estimat de sosire
             </p>
-            <ul className="mt-4 space-y-4">
+            <ul ref={barsRef} className="mt-4 space-y-4">
               {mapRings.map((r, i) => (
-                <li key={r.km}>
+                <li key={r.km} className="group/ring">
                   <div className="flex items-baseline justify-between">
                     <span className="inline-flex items-center gap-2.5 text-base font-extrabold">
-                      <span className={`size-2.5 rounded-full ${ringTones[i]}`} /> {r.minutes}
+                      <span className={`vm-dot-pulse size-2.5 rounded-full ${ringTones[i]}`} style={{ animationDelay: `${i * 400}ms` }} /> {r.minutes}
                     </span>
                     <span className="text-sm font-black tabular-nums text-brand">{r.km} km</span>
                   </div>
-                  <div className="mt-2 h-1 overflow-hidden rounded-full bg-border">
-                    <div className="h-full rounded-full bg-brand" style={{ width: `${r.km}%` }} />
+                  <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-border">
+                    <div
+                      className="relative h-full overflow-hidden rounded-full bg-brand transition-[width] duration-[1400ms] ease-out group-hover/ring:brightness-110"
+                      style={{ width: inView ? `${r.km}%` : "0%", transitionDelay: `${i * 200}ms` }}
+                    >
+                      <span className="vm-bar-shine absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-brand-foreground/60 to-transparent" style={{ animationDelay: `${1400 + i * 300}ms` }} />
+                    </div>
                   </div>
                 </li>
               ))}
