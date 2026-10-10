@@ -180,15 +180,15 @@ export function InterventionsGallery() {
             </a>
           </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="gallery-reviews -mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:px-0">
             {reviews.map((r, i) => {
               const featured = i === 0;
               return (
                 <article
                   key={r.name}
-                  className={`group relative flex flex-col overflow-hidden rounded-3xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-float ${
+                  className={`group relative flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-3xl sm:w-[340px] border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-float ${
                     featured
-                      ? "border-brand bg-brand text-brand-foreground shadow-glow md:col-span-2 lg:col-span-1 lg:row-span-2"
+                      ? "border-brand bg-brand text-brand-foreground shadow-glow"
                       : "border-border bg-card shadow-card hover:border-brand/40"
                   }`}
                 >
