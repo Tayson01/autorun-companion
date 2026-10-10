@@ -25,6 +25,9 @@ import s3 from "@/assets/stoc/stoc-3.jpg";
 import s4 from "@/assets/stoc/stoc-4.jpg";
 import s5 from "@/assets/stoc/stoc-5.jpg";
 import s6 from "@/assets/stoc/stoc-6.jpg";
+import s8 from "@/assets/stoc/stoc-8.jpg";
+import s9 from "@/assets/stoc/stoc-9.jpg";
+import s10 from "@/assets/stoc/stoc-10.jpg";
 
 export const Route = createFileRoute("/anvelope-sh")({
   staticData: { sitemap: true },
@@ -53,6 +56,9 @@ const photos = [
   { src: s3, alt: "Depozit acoperit cu anvelope second hand" },
   { src: s5, alt: "Anvelope SH 205/65 R15 și 215/55 R18" },
   { src: s6, alt: "Stoc de anvelope SH la Vulcanizare Dragodana" },
+  { src: s8, alt: "Stive de anvelope Atlas în depozit" },
+  { src: s9, alt: "Anvelope stivuite în atelierul din Dragodana" },
+  { src: s10, alt: "Stivă de anvelope Annaite la intrarea în atelier" },
 ];
 
 const categories = [
@@ -366,7 +372,7 @@ function AnvelopeSH() {
               key={p.alt}
               type="button"
               onClick={() => setLightbox(i)}
-              className={`group relative aspect-[4/5] w-[70%] shrink-0 snap-center overflow-hidden rounded-3xl md:aspect-auto md:w-auto ${["md:col-span-2 md:row-span-2", "", "", "md:col-span-2", "md:col-span-2", "md:col-span-2"][i]}`}
+              className={`group relative aspect-[4/5] w-[70%] shrink-0 snap-center overflow-hidden rounded-3xl md:aspect-auto md:w-auto ${["md:col-span-2 md:row-span-2", "", "", "", "", "md:col-span-2", "md:col-span-2", "md:col-span-2", "md:col-span-2"][i]}`}
             >
               <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </button>
