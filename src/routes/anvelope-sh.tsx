@@ -377,23 +377,82 @@ function AnvelopeSH() {
       </section>
 
       {/* FAQ */}
-      <section className="mx-auto max-w-3xl px-5 pb-14 sm:pb-24">
-        <h2 className="text-3xl font-black tracking-tight sm:text-4xl">Întrebări frecvente</h2>
-        <div className="mt-6 divide-y divide-border rounded-3xl border border-border bg-card">
-          {faqs.map((f, i) => (
-            <div key={f.q}>
-              <button
-                type="button"
-                onClick={() => setOpen(open === i ? null : i)}
-                aria-expanded={open === i}
-                className="flex min-h-16 w-full items-center justify-between gap-4 px-5 text-left font-bold"
-              >
-                {f.q}
-                <ChevronDown className={`size-5 shrink-0 text-brand transition-transform ${open === i ? "rotate-180" : ""}`} />
-              </button>
-              {open === i && <p className="animate-rise px-5 pb-5 text-sm text-muted-foreground">{f.a}</p>}
+      <section className="mx-auto max-w-6xl px-5 pb-16 sm:pb-24">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <p className="text-xs font-black uppercase tracking-widest text-brand">Întrebări frecvente</p>
+            <h2 className="mt-2 text-3xl font-black leading-[1.05] tracking-tight sm:text-5xl">
+              Ai întrebări?
+              <br />
+              <span className="text-brand">Avem răspunsuri.</span>
+            </h2>
+            <p className="mt-3 text-muted-foreground">Tot ce trebuie să știi înainte să cumperi anvelope SH.</p>
+            <div className="mt-6 hidden rounded-3xl bg-foreground p-6 text-background lg:block">
+              <p className="font-black">Nu ai găsit răspunsul?</p>
+              <p className="mt-1 text-sm opacity-70">Scrie-ne sau sună, îți răspundem imediat.</p>
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                <a href={waHref} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-success text-sm font-black text-brand-foreground">
+                  <MessageCircle className="size-4" /> WhatsApp
+                </a>
+                <a href={`tel:${TEL}`} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand text-sm font-black text-brand-foreground">
+                  <Phone className="size-4" /> Sună
+                </a>
+              </div>
             </div>
-          ))}
+          </div>
+
+          <div className="space-y-3">
+            {faqs.map((f, i) => {
+              const on = open === i;
+              return (
+                <div
+                  key={f.q}
+                  className={`overflow-hidden rounded-3xl border-2 transition-all duration-300 ${
+                    on ? "border-brand/40 bg-card shadow-float" : "border-border bg-card hover:border-foreground/20"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpen(on ? null : i)}
+                    aria-expanded={on}
+                    className="flex min-h-[72px] w-full items-center gap-4 px-4 text-left sm:px-6"
+                  >
+                    <span
+                      className={`flex size-10 shrink-0 items-center justify-center rounded-2xl text-sm font-black tabular-nums transition-colors ${
+                        on ? "bg-brand text-brand-foreground" : "bg-surface text-muted-foreground"
+                      }`}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="flex-1 text-[15px] font-bold leading-snug sm:text-base">{f.q}</span>
+                    <span
+                      className={`flex size-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                        on ? "rotate-180 border-brand bg-brand-soft text-brand" : "border-border"
+                      }`}
+                    >
+                      <ChevronDown className="size-4" />
+                    </span>
+                  </button>
+                  <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${on ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
+                    <div className="overflow-hidden">
+                      <p className="mx-4 mb-5 border-l-4 border-brand pl-4 text-sm leading-relaxed text-muted-foreground sm:mx-6 sm:ml-[76px] sm:text-[15px]">
+                        {f.a}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+            <div className="grid grid-cols-2 gap-2 pt-2 lg:hidden">
+              <a href={waHref} target="_blank" rel="noreferrer" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-2xl bg-success text-sm font-black text-brand-foreground">
+                <MessageCircle className="size-4" /> Altă întrebare?
+              </a>
+              <a href={`tel:${TEL}`} className="inline-flex min-h-13 items-center justify-center gap-2 rounded-2xl border-2 border-border bg-card text-sm font-bold">
+                <Phone className="size-4 text-brand" /> Sună-ne
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
