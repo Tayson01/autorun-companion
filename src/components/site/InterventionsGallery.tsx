@@ -172,28 +172,28 @@ export function InterventionsGallery() {
               <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand">
                 <GoogleMark className="size-4" /> Recenzii verificate
               </p>
-              <h3 className="mt-2 text-2xl font-black sm:text-3xl">Ce spun clienții noștri</h3>
+              <h3 className="mt-2 text-xl font-black sm:text-3xl">Ce spun clienții noștri</h3>
             </div>
-            <a href={GOOGLE_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-bold text-brand-foreground shadow-glow transition-transform hover:-translate-y-0.5 active:scale-[0.98]">
+            <a href={GOOGLE_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-[13px] font-bold text-brand-foreground shadow-glow transition-transform hover:-translate-y-0.5 sm:px-5 sm:py-2.5 sm:text-sm active:scale-[0.98]">
               <Star className="size-4 fill-current" /> Lasă o recenzie
             </a>
           </div>
 
-          <div className="gallery-reviews -mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:px-0">
+          <div className="gallery-reviews -mx-5 mt-5 sm:mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:px-0">
             {reviews.map((r, i) => {
               const featured = i === 0;
               return (
                 <article
                   key={r.name}
-                  className={`group relative flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-3xl sm:w-[340px] border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-float ${
+                  className={`group relative flex w-[78%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl sm:rounded-3xl sm:w-[340px] border p-4 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-float ${
                     featured
                       ? "border-brand bg-brand text-brand-foreground shadow-glow"
                       : "border-border bg-card shadow-card hover:border-brand/40"
                   }`}
                 >
-                  <Quote className={`absolute -right-2 -top-2 size-24 transition-transform duration-500 group-hover:rotate-12 ${featured ? "text-brand-foreground/15" : "text-brand/10"}`} />
+                  <Quote className={`absolute -right-2 -top-2 size-16 sm:size-24 transition-transform duration-500 group-hover:rotate-12 ${featured ? "text-brand-foreground/15" : "text-brand/10"}`} />
                   <div className="relative flex items-center gap-3">
-                    <img src={r.avatar} alt={r.name} width={48} height={48} loading="lazy" className={`size-12 rounded-full object-cover ring-2 ${featured ? "ring-brand-foreground/60" : "ring-brand/20"}`} />
+                    <img src={r.avatar} alt={r.name} width={48} height={48} loading="lazy" className={`size-10 sm:size-12 rounded-full object-cover ring-2 ${featured ? "ring-brand-foreground/60" : "ring-brand/20"}`} />
                     <div className="min-w-0">
                       <p className="truncate font-bold capitalize">{r.name}</p>
                       <p className={`text-xs ${featured ? "text-brand-foreground/75" : "text-muted-foreground"}`}>{r.when}</p>
@@ -204,7 +204,7 @@ export function InterventionsGallery() {
                       <Star key={s} className="size-4 fill-star text-star" />
                     ))}
                   </span>
-                  <p className={`relative mt-3 flex-1 whitespace-pre-line leading-relaxed ${featured ? "text-2xl font-black sm:text-3xl" : "text-lg font-semibold"}`}>
+                  <p className={`relative mt-3 flex-1 whitespace-pre-line leading-relaxed ${featured ? "text-lg font-black sm:text-3xl" : "text-base font-semibold sm:text-lg"}`}>
                     „{r.text}”
                   </p>
                   <a href={r.url} target="_blank" rel="noreferrer" className={`relative mt-5 inline-flex items-center gap-1.5 text-xs font-semibold ${featured ? "text-brand-foreground/80 hover:text-brand-foreground" : "text-muted-foreground hover:text-foreground"}`}>
