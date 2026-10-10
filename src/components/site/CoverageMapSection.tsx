@@ -8,8 +8,8 @@ const CoverageMap = lazy(() => import("./CoverageMap"));
 const ringTones = ["bg-brand", "bg-brand/60", "bg-brand/30"];
 
 const stats = [
-  { icon: Clock, value: "25 min", label: "sosire medie" },
-  { icon: RouteIcon, value: "50 km", label: "rază acoperită" },
+  { icon: Clock, value: "30 min", label: "sosire medie" },
+  { icon: RouteIcon, value: "100 km", label: "rază acoperită" },
   { icon: Radar, value: "24/7", label: "intervenții" },
 ];
 
@@ -86,7 +86,7 @@ export function CoverageMapSection() {
                   <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-surface">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-brand to-brand/40 transition-all duration-700"
-                      style={{ width: `${(r.km / 50) * 100}%` }}
+                      style={{ width: `${(r.km / 100) * 100}%` }}
                     />
                   </div>
                 </li>
