@@ -113,29 +113,35 @@ function AnvelopeSH() {
   return (
     <main className="overflow-x-hidden">
       {/* HERO */}
-      <section className="relative">
-        <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 size-[420px] rounded-full bg-brand/15 blur-3xl" />
-        <div className="relative mx-auto grid max-w-6xl gap-8 px-5 pb-10 pt-8 md:pt-14 lg:grid-cols-[1fr_1fr] lg:items-center lg:gap-12">
-          <div className="animate-rise">
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand/25 bg-brand-soft px-3 py-1.5 text-[11px] font-black uppercase tracking-widest text-brand">
+      <section className="relative isolate overflow-hidden bg-foreground text-background">
+        <img src={photos[0]!.src} alt="" aria-hidden className="vm-kenburns absolute inset-0 -z-10 h-full w-full object-cover opacity-45" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-foreground via-foreground/75 to-foreground/30 lg:bg-gradient-to-r lg:from-foreground lg:via-foreground/80 lg:to-foreground/10" />
+        <div aria-hidden className="vm-tread absolute inset-y-0 right-0 -z-10 hidden w-24 opacity-20 lg:block" />
+        <div aria-hidden className="pointer-events-none absolute -left-32 bottom-0 -z-10 size-[420px] rounded-full bg-brand/30 blur-3xl" />
+
+        <div className="mx-auto flex min-h-[78svh] max-w-6xl flex-col justify-end px-5 pb-10 pt-24 sm:min-h-[640px] lg:justify-center lg:pb-16">
+          <div className="animate-rise max-w-2xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-background/20 bg-background/10 px-3 py-1.5 text-[11px] font-black uppercase tracking-widest backdrop-blur">
               <span className="relative flex size-2">
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-70" />
                 <span className="relative inline-flex size-2 rounded-full bg-success" />
               </span>
-              Stoc în Dragodana
+              Stoc disponibil · Dragodana
             </span>
-            <h1 className="mt-4 text-[2.5rem] font-black leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl">
-              Anvelope <span className="text-brand">SH</span>
+            <h1 className="mt-5 text-[3rem] font-black leading-[0.92] tracking-tight sm:text-7xl lg:text-8xl">
+              Anvelope
               <br />
-              la preț bun.
+              <span className="text-brand">SH</span> la preț
+              <br />
+              bun.
             </h1>
-            <p className="mt-4 max-w-md text-base text-muted-foreground sm:text-lg">
+            <p className="mt-5 max-w-md text-base opacity-80 sm:text-lg">
               Vară, iarnă și all-season, sortate pe dimensiuni. Ne spui mărimea, îți spunem ce avem.
             </p>
-            <div className="mt-6 grid gap-2.5 sm:flex">
+            <div className="mt-7 grid gap-2.5 sm:flex">
               <a
                 href="#cauta"
-                className="vm-shine inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-brand px-6 text-base font-black text-brand-foreground shadow-glow"
+                className="vm-shine inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-brand px-7 text-base font-black text-brand-foreground shadow-glow transition-transform hover:-translate-y-0.5"
               >
                 <Search className="size-5" /> Caută dimensiunea
               </a>
@@ -143,30 +149,23 @@ function AnvelopeSH() {
                 href={waPhoto}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border-2 border-border bg-card px-6 text-base font-bold transition-colors hover:border-brand/40"
+                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-background/25 bg-background/10 px-7 text-base font-bold backdrop-blur transition-colors hover:bg-background/20"
               >
-                <Camera className="size-5 text-brand" /> Trimite o poză
+                <Camera className="size-5" /> Trimite o poză
               </a>
             </div>
-          </div>
-
-          {/* Mobile: swipe carousel · Desktop: mosaic */}
-          <div className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 lg:mx-0 lg:grid lg:h-[480px] lg:grid-cols-6 lg:grid-rows-6 lg:overflow-visible lg:p-0">
-            {["lg:col-span-4 lg:row-span-4", "lg:col-span-2 lg:row-span-3", "lg:col-span-2 lg:row-span-3", "lg:col-span-4 lg:row-span-2"].map((cls, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setLightbox(i)}
-                className={`group relative h-60 w-[78%] shrink-0 snap-center overflow-hidden rounded-3xl shadow-card lg:h-auto lg:w-auto ${cls}`}
-              >
-                <img
-                  src={photos[i]!.src}
-                  alt={photos[i]!.alt}
-                  loading={i === 0 ? "eager" : "lazy"}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </button>
-            ))}
+            <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold opacity-85">
+              {[
+                { i: Sun, t: "Vară" },
+                { i: Snowflake, t: "Iarnă" },
+                { i: CloudSun, t: "All-season" },
+                { i: MapPin, t: "Calea Găești 45" },
+              ].map((x) => (
+                <span key={x.t} className="inline-flex items-center gap-1.5">
+                  <x.i className="size-4 text-brand" /> {x.t}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -362,13 +361,13 @@ function AnvelopeSH() {
             <MapPin className="size-4" /> {ADDRESS}
           </a>
         </div>
-        <div className="-mx-5 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:p-0">
+        <div className="-mx-5 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:auto-rows-[220px] md:grid-cols-4 md:overflow-visible md:p-0">
           {photos.map((p, i) => (
             <button
               key={p.alt}
               type="button"
               onClick={() => setLightbox(i)}
-              className="group relative aspect-[4/5] w-[70%] shrink-0 snap-center overflow-hidden rounded-3xl md:aspect-[4/3] md:w-auto"
+              className={`group relative aspect-[4/5] w-[70%] shrink-0 snap-center overflow-hidden rounded-3xl md:aspect-auto md:w-auto ${["md:col-span-2 md:row-span-2", "", "", "md:col-span-2", "", ""][i]}`}
             >
               <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </button>
