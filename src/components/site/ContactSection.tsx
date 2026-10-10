@@ -30,7 +30,7 @@ export function ContactSection() {
             <div className="flex items-center gap-2">
               <span className="vm-live" aria-hidden />
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-brand-foreground/80">
-                Suntem online acum · 24/7
+                Deschis non-stop în Dragodana · 24/24
               </p>
             </div>
 

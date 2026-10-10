@@ -13,7 +13,7 @@ export const Route = createFileRoute("/servicii/")({
       {
         name: "description",
         content:
-          "Toate serviciile Vulcanizare Dragodana, deschisă 24/24 și cu intervenții mobile: asistență rutieră 24/7, reparație pană pe loc, montaj la domiciliu, echilibrare roți, camioane și transport auto.",
+          "Toate serviciile Vulcanizare Dragodana, deschisă 24/24 și cu intervenții mobile: asistență rutieră 24/24, reparație pană pe loc, montaj la domiciliu, echilibrare roți, camioane și transport auto.",
       },
       { property: "og:title", content: "Servicii — Vulcanizare Dragodana" },
       {
@@ -37,7 +37,7 @@ function ServiciiPage() {
       </h1>
       <p className="mt-4 max-w-2xl text-muted-foreground">
         De la pene neașteptate pe drum până la întreținere programată — echipa noastră din Dragodana se
-        ocupă de tot, 24/7.
+        ocupă de tot, 24/24.
       </p>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -10,7 +10,7 @@ const ringTones = ["bg-brand", "bg-brand/60", "bg-brand/30"];
 const stats = [
   { icon: Clock, value: "30 min", label: "sosire medie" },
   { icon: RouteIcon, value: "100 km", label: "rază acoperită" },
-  { icon: Radar, value: "24/7", label: "intervenții" },
+  { icon: Radar, value: "24/24", label: "non-stop" },
 ];
 
 export function CoverageMapSection() {

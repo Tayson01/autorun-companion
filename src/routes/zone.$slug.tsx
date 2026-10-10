@@ -18,7 +18,7 @@ export const Route = createFileRoute("/zone/$slug")({
       ? `Vulcanizare ${z.name} — Vulcanizare Dragodana`
       : "Zonă deservită — Vulcanizare Dragodana";
     const description = z
-      ? `${z.desc} Timp estimat de sosire: ${z.etaMinutes}. Intervenții 24/7, sună la ${PHONE}.`
+      ? `${z.desc} Timp estimat de sosire: ${z.etaMinutes}. Intervenții 24/24, sună la ${PHONE}.`
       : "Zone deservite de Vulcanizare Dragodana.";
     return {
       meta: [
@@ -55,7 +55,7 @@ function ZonePage() {
           <p className="inline-flex items-center gap-2 text-xs font-semibold text-muted-foreground">
             <MapPin className="size-4 text-brand" /> Program
           </p>
-          <p className="mt-1 text-lg font-bold">Non-stop, 24/7</p>
+          <p className="mt-1 text-lg font-bold">Non-stop în Dragodana, 24/24</p>
         </div>
         <a
           href={`https://www.google.com/maps/search/?api=1&query=${zone.coords[0]},${zone.coords[1]}`}
