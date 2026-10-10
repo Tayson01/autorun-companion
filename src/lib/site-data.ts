@@ -502,3 +502,9 @@ export const faqs = [
     category: "servicii",
   },
 ];
+
+export const COMPANY = {
+  name: "VULCANIZARE DRAGODANA SRL",
+  cui: "40325478",
+  regCom: "J1517702018",
+};
