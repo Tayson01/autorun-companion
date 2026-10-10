@@ -44,6 +44,11 @@ export function Footer() {
                 </li>
               ))}
               <li>
+                <Link to="/anvelope-sh" className="hover:text-foreground">
+                  Anvelope SH
+                </Link>
+              </li>
+              <li>
                 <Link to="/intrebari-frecvente" className="hover:text-foreground">
                   Întrebări frecvente
                 </Link>

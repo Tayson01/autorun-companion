@@ -14,7 +14,7 @@ import { FAQSection } from "@/components/site/FAQSection";
 import { ContactSection } from "@/components/site/ContactSection";
 import { InterventionsGallery } from "@/components/site/InterventionsGallery";
 import { PriceHighlight } from "@/components/site/PriceHighlight";
-import { UsedTiresStock } from "@/components/site/UsedTiresStock";
+import { UsedTiresTeaser } from "@/components/site/UsedTiresTeaser";
 import { BASE, PHONE, TEL, WA, zones } from "@/lib/site-data";
 
 
@@ -132,7 +132,7 @@ function Index() {
       </section>
 
       <PriceHighlight />
-      <UsedTiresStock />
+      <UsedTiresTeaser />
 
       {/* Bară urgență */}
       <section className="border-y border-border bg-surface">

@@ -11,6 +11,7 @@ import { PHONE, TEL, WA } from "@/lib/site-data";
 const nav = [
   { to: "/", label: "Acasă" },
   { to: "/servicii", label: "Servicii" },
+  { to: "/anvelope-sh", label: "Anvelope SH" },
   { to: "/zone", label: "Zone deservite" },
   { to: "/intrebari-frecvente", label: "Întrebări" },
   { to: "/contact", label: "Contact" },
