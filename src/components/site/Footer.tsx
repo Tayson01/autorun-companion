@@ -3,7 +3,7 @@ import logoDark from "@/assets/dragodana-logo-dark.png";
 import { Link } from "@tanstack/react-router";
 import { Phone, MessageCircle, MapPin } from "lucide-react";
 
-import { PHONE, TEL, ADDRESS, WA, services, zones } from "@/lib/site-data";
+import { COMPANY, PHONE, TEL, ADDRESS, WA, services, zones } from "@/lib/site-data";
 
 export function Footer() {
   return (
