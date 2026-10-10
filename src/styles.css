@@ -737,3 +737,25 @@
 .leaflet-drag-target .vm-pin2-halo {
   animation: none !important;
 }
+
+/* ===== Bloc preț 40 lei ===== */
+.price-hero {
+  background:
+    radial-gradient(120% 120% at 0% 0%, color-mix(in oklab, var(--brand) 70%, var(--foreground)) 0%, transparent 55%),
+    linear-gradient(135deg, var(--brand) 0%, color-mix(in oklab, var(--brand) 75%, var(--foreground)) 100%);
+}
+.price-hero-glow {
+  position: absolute;
+  inset: auto -10% -40% auto;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: radial-gradient(circle, color-mix(in oklab, var(--brand-foreground) 28%, transparent), transparent 65%);
+  filter: blur(10px);
+}
+.price-tag {
+  transform: rotate(-2deg);
+  box-shadow: 0 30px 60px -20px color-mix(in oklab, var(--foreground) 55%, transparent);
+  transition: transform 0.3s ease;
+}
+.price-tag:hover { transform: rotate(0deg) scale(1.02); }
