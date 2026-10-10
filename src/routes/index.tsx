@@ -152,9 +152,8 @@ function Index() {
       <UsedTiresTeaser />
 
       {/* Bară urgență */}
-      <section className="px-4 py-8 sm:py-12">
-        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-foreground p-5 text-background shadow-float sm:p-8">
-          <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-brand/30 blur-3xl" />
+      <section className="bg-foreground px-5 py-10 text-background sm:py-14">
+        <div className="relative mx-auto max-w-6xl">
           <div className="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-xl">
               <span className="inline-flex items-center gap-2 rounded-full bg-background/10 px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
