@@ -63,7 +63,7 @@ export const services: Service[] = [
   {
     slug: "asistenta-rutiera",
     icon: "lifebuoy",
-    title: "Asistență rutieră 24/7",
+    title: "Asistență rutieră 24/24",
     desc: "Intervenim non-stop pe A1, DN7 și în toată zona, indiferent de oră.",
     intro:
       "Rămâi cu pana pe autostradă sau pe drum național? Venim la tine cu duba de intervenție, complet echipată, la orice oră din zi sau din noapte. Nu ai nevoie de platformă și nu trebuie să îți muți mașina.",
@@ -464,7 +464,7 @@ export const faqs = [
   },
   {
     q: "Veniți și noaptea sau în weekend?",
-    a: "Da, suntem disponibili 24/7, inclusiv noaptea, sâmbăta, duminica și de sărbători. Dacă rămâneți cu pana la 3 dimineața, sunați și venim.",
+    a: "Da, suntem disponibili 24/24, inclusiv noaptea, sâmbăta, duminica și de sărbători. Dacă rămâneți cu pana la 3 dimineața, sunați și venim.",
     category: "disponibilitate",
   },
   {

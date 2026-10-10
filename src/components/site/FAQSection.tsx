@@ -171,7 +171,7 @@ export function FAQSection() {
             </div>
             <p className="mt-5 text-lg font-bold">Nu găsești răspunsul?</p>
             <p className="mt-2 text-sm text-muted-foreground">
-              Dispecerul nostru răspunde direct la telefon și pe WhatsApp, 24/7.
+              Dispecerul nostru răspunde direct la telefon și pe WhatsApp, 24/24.
             </p>
             <div className="mt-5 flex flex-col gap-2.5">
               <Btn href={`tel:${TEL}`} className="vm-callfx vm-callcta w-full">

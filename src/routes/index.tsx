@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Intervenții rapide 24/7 pentru autoturisme, camioane și flote, în atelier sau direct la locația ta, în Dâmbovița.",
+          "Intervenții rapide 24/24 pentru autoturisme, camioane și flote, în atelier sau direct la locația ta, în Dâmbovița.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -85,10 +85,11 @@ function Index() {
 
               <h1 className="mt-4 text-[2.1rem] font-black leading-[1.06] sm:text-5xl md:leading-[1.02]">
                 Vulcanizare <span className="text-brand">Dragodana</span>
+                <span className="mt-2 block text-[1.35rem] font-extrabold text-brand sm:text-3xl">NON-STOP 24/24</span>
               </h1>
 
               <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:mt-6 sm:text-lg">
-                Vulcanizare deschisă 24/24 pe Calea Găești 45, Dragodana. Vino la noi oricând sau venim noi la tine:
+                Vulcanizare deschisă non-stop în Dragodana — zi și noapte, weekend și sărbători, pe Calea Găești 45. Vino la noi oricând sau venim noi la tine:
                 Găești, Târgoviște, Titu, A1 și până la 100 km.
               </p>
 
@@ -108,9 +109,9 @@ function Index() {
 
               <dl className="mt-5 grid max-w-xl grid-cols-3 gap-2 sm:mt-10 sm:gap-3">
                 {[
-                  { icon: Clock, k: "< 20 min", v: "timp de răspuns" },
+                  { icon: Clock, k: "24/24", v: "deschis non-stop" },
                   { icon: MapPin, k: "100 km", v: "rază acoperire" },
-                  { icon: ShieldCheck, k: "Garanție", v: "la fiecare lucrare" },
+                  { icon: ShieldCheck, k: "7 din 7", v: "inclusiv sărbători" },
                 ].map((s) => (
                   <div
                     key={s.k}
@@ -133,9 +134,9 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 py-10">
           <div className="flex flex-wrap items-center justify-between gap-5">
             <div>
-              <p className="text-base font-bold">Ai pană acum?</p>
+              <p className="text-base font-bold">Ai pană acum? Suntem deschiși non-stop în Dragodana.</p>
               <p className="text-sm text-muted-foreground">
-                Răspundem 24/7. Trimite locația pe WhatsApp și pornim spre tine.
+                Vino oricând la atelier pe Calea Găești 45 sau trimite locația pe WhatsApp și pornim spre tine.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

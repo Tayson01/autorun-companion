@@ -59,7 +59,7 @@ function ContactPage() {
           <div className="rounded-3xl border border-border bg-card p-6">
             <Clock className="size-5 text-brand" />
             <p className="mt-4 text-xs font-semibold text-muted-foreground">Program</p>
-            <p className="text-lg font-bold">Non-stop, 24/7</p>
+            <p className="text-lg font-bold">Non-stop în Dragodana, 24/24</p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Btn href={`tel:${TEL}`}>
