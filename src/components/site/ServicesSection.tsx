@@ -125,27 +125,27 @@ export function ServicesSection() {
         {(showAtelier || showMobile) && (
           <div className={`mt-6 grid gap-5 ${showAtelier && showMobile ? "lg:grid-cols-2" : ""}`}>
             {showMobile && (
-              <article className="group relative overflow-hidden rounded-[28px] border border-border bg-card p-7 shadow-card sm:p-9">
+              <article className="group relative overflow-hidden rounded-[22px] sm:rounded-[28px] border border-border bg-card p-7 shadow-card sm:p-9">
                 <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 size-80 rounded-full bg-brand/10 blur-3xl transition-opacity group-hover:opacity-70" />
                 <div className="relative flex items-start justify-between gap-4">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-brand">
                     <Truck className="size-3.5" /> Mobil · până la 100 km
                   </span>
-                  <span className="flex size-12 items-center justify-center rounded-2xl bg-brand text-brand-foreground">
-                    <ServiceIcon name={mobile.icon} className="size-6" />
+                  <span className="flex size-10 sm:size-12 items-center justify-center rounded-2xl bg-brand text-brand-foreground">
+                    <ServiceIcon name={mobile.icon} className="size-5 sm:size-6" />
                   </span>
                 </div>
-                <h3 className="relative mt-6 text-3xl font-black tracking-tight sm:text-4xl">{mobile.title}</h3>
-                <p className="relative mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">{mobile.intro}</p>
+                <h3 className="relative mt-4 text-2xl font-black tracking-tight sm:text-4xl">{mobile.title}</h3>
+                <p className="relative mt-2 max-w-lg text-[13px] leading-relaxed sm:text-sm text-muted-foreground">{mobile.intro}</p>
 
-                <div className="relative mt-6 inline-flex items-center gap-2 rounded-2xl border border-border bg-surface px-4 py-3">
+                <div className="relative mt-4 inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-3 py-2 sm:mt-6 sm:rounded-2xl sm:px-4 sm:py-3">
                   <Clock className="size-4 text-brand" />
-                  <span className="text-sm font-bold">{mobile.duration}</span>
+                  <span className="text-[13px] font-bold sm:text-sm">{mobile.duration}</span>
                 </div>
 
-                <ul className="relative mt-6 grid gap-2 sm:grid-cols-2">
+                <ul className="relative mt-4 grid gap-1.5 sm:mt-6 sm:gap-2 sm:grid-cols-2">
                   {mobile.bullets.slice(0, 4).map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-foreground/90">
+                    <li key={b} className="flex items-start gap-2 text-[13px] sm:text-sm text-foreground/90">
                       <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-soft">
                         <Check className="size-3 text-brand" />
                       </span>
@@ -154,10 +154,10 @@ export function ServicesSection() {
                   ))}
                 </ul>
 
-                <div className="relative mt-7 flex flex-wrap gap-3">
+                <div className="relative mt-5 grid grid-cols-[1fr_auto] gap-2 sm:mt-7 sm:flex sm:flex-wrap sm:gap-3">
                   <a
                     href={`tel:${TEL}`}
-                    className="vm-callfx vm-callcta inline-flex items-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-bold text-brand-foreground shadow-card transition-transform hover:-translate-y-0.5"
+                    className="vm-callfx vm-callcta inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 text-sm font-bold text-brand-foreground shadow-card transition-transform hover:-translate-y-0.5"
                   >
                     <Phone className="size-4" /> <span className="tabular-nums">{PHONE}</span>
                   </a>
