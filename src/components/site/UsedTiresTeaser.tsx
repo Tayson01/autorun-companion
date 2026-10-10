@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Warehouse } from "lucide-react";
 
 import s1 from "@/assets/stoc/stoc-1.jpg";
-import s4 from "@/assets/stoc/stoc-4.jpg";
+import s7 from "@/assets/stoc/stoc-7.jpg";
 
 export function UsedTiresTeaser() {
   return (
@@ -27,7 +27,7 @@ export function UsedTiresTeaser() {
         </div>
         <div className="grid h-48 grid-cols-2 gap-1 md:h-auto">
           <img src={s1} alt="Rafturi cu anvelope SH" loading="lazy" className="h-full w-full object-cover" />
-          <img src={s4} alt="Anvelope SH în curtea atelierului" loading="lazy" className="h-full w-full object-cover" />
+          <img src={s7} alt="Stive de anvelope SH sortate pe dimensiuni" loading="lazy" className="h-full w-full object-cover" />
         </div>
       </Link>
     </section>
