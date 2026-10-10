@@ -119,7 +119,7 @@ function AnvelopeSH() {
         <div aria-hidden className="vm-tread absolute inset-y-0 right-0 -z-10 hidden w-24 opacity-20 lg:block" />
         <div aria-hidden className="pointer-events-none absolute -left-32 bottom-0 -z-10 size-[420px] rounded-full bg-brand/30 blur-3xl" />
 
-        <div className="mx-auto flex min-h-[78svh] max-w-6xl flex-col justify-end px-5 pb-10 pt-24 sm:min-h-[640px] lg:justify-center lg:pb-16">
+        <div className="mx-auto flex min-h-[78svh] max-w-6xl flex-col justify-end px-5 pb-10 pt-16 sm:min-h-[620px] lg:justify-center lg:pb-16">
           <div className="animate-rise max-w-2xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-background/20 bg-background/10 px-3 py-1.5 text-[11px] font-black uppercase tracking-widest backdrop-blur">
               <span className="relative flex size-2">
