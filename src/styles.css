@@ -824,3 +824,15 @@
 .vm-bar-shine { animation: vm-bar-shine 2.8s ease-in-out infinite; }
 .vm-dot-pulse { animation: vm-dot-pulse 2.2s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .vm-bar-shine, .vm-dot-pulse { animation: none; } }
+
+@keyframes vm-text-sweep { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+.vm-text-sweep {
+  background: linear-gradient(90deg, var(--color-brand) 0%, var(--color-brand) 40%, color-mix(in oklab, var(--color-brand) 35%, white) 50%, var(--color-brand) 60%, var(--color-brand) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: vm-text-sweep 3.5s linear infinite;
+}
+@keyframes vm-hand { to { transform: rotate(360deg); } }
+.vm-hand-fast { transform-origin: 12px 12px; animation: vm-hand 2s linear infinite; }
+.vm-hand-slow { transform-origin: 12px 12px; animation: vm-hand 24s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .vm-text-sweep, .vm-hand-fast, .vm-hand-slow { animation: none; } }
