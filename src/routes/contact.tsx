@@ -9,13 +9,13 @@ export const Route = createFileRoute("/contact")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Contact — Vulcanizare Autorun, non-stop" },
+      { title: "Contact — Vulcanizare Dragodana, non-stop" },
       {
         name: "description",
         content:
-          "Sună la 0725 471 288 sau trimite locația pe WhatsApp. Vulcanizare mobilă în Constanța, disponibili 24/7, Strada Răsăritului 7.",
+          "Sună la 0729 847 830 sau trimite locația pe WhatsApp. Vulcanizare mobilă în Constanța, disponibili 24/7, Calea Găești, Nr. 45, Dragodana.",
       },
-      { property: "og:title", content: "Contact — Vulcanizare Autorun" },
+      { property: "og:title", content: "Contact — Vulcanizare Dragodana" },
       {
         property: "og:description",
         content: "Telefon, WhatsApp cu locație și adresă — intervenții non-stop în Constanța.",

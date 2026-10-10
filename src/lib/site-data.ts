@@ -1,12 +1,12 @@
-export const PHONE = "0725 471 288";
-export const TEL = "+40725471288";
-export const WA_NUMBER = "40725471288";
+export const PHONE = "0729 847 830";
+export const TEL = "+40729847830";
+export const WA_NUMBER = "40729847830";
 export const WA =
-  "https://wa.me/40725471288?text=Bun%C4%83%20ziua!%20Am%20nevoie%20de%20vulcanizare%20mobil%C4%83%20%C3%AEn%20Constan%C8%9Ba.";
-export const MAPS = "https://maps.app.goo.gl/JXPdubgGGMryF39f7";
+  "https://wa.me/40729847830?text=Bun%C4%83%20ziua!%20Am%20nevoie%20de%20vulcanizare%20mobil%C4%83%20%C3%AEn%20Constan%C8%9Ba.";
+export const MAPS = "https://www.google.com/maps/search/?api=1&query=Calea+G%C4%83e%C8%99ti+45+Dragodana";
 export const REVIEWS = MAPS;
 
-export const BASE: [number, number] = [44.192542, 28.630099];
+export const BASE: [number, number] = [44.6867, 25.7553];
 
 export type Service = {
   slug: string;
@@ -210,7 +210,7 @@ export const zones: Zone[] = [
     coords: [44.1733, 28.6383],
     desc: "Tot orașul, inclusiv Tomis Nord, Faleză, Km 4-5 și zona port.",
     intro:
-      "Baza noastră este pe Strada Răsăritului 7, așa că acoperim tot orașul rapid: Tomis Nord, Tomis III, Faleză Nord, Km 4-5, Coiciu, Palas, Inel II și zona Portului.",
+      "Baza noastră este pe Calea Găești, Nr. 45, Dragodana, așa că acoperim tot orașul rapid: Tomis Nord, Tomis III, Faleză Nord, Km 4-5, Coiciu, Palas, Inel II și zona Portului.",
     roads: ["Bd. Mamaia", "Bd. Aurel Vlaicu", "Șos. Mangaliei", "Bd. 1 Mai", "Centura Constanța"],
     localities: ["Tomis Nord", "Faleză Nord", "Km 4-5", "Coiciu", "Palas", "Zona Port"],
   },
@@ -292,7 +292,7 @@ export function waLink(text: string) {
 }
 
 export const EMAIL = "contact@vulcanizaremobilaconstanta.ro";
-export const ADDRESS = "Strada Răsăritului 7, Constanța";
+export const ADDRESS = "Calea Găești, Nr. 45, Dragodana";
 
 export const stats = [
   { value: "15 min", label: "Timp mediu de răspuns în oraș" },

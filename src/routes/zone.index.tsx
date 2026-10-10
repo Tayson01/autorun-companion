@@ -9,13 +9,13 @@ export const Route = createFileRoute("/zone/")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Zone deservite — Vulcanizare Autorun și litoral" },
+      { title: "Zone deservite — Vulcanizare Dragodana și litoral" },
       {
         name: "description",
         content:
           "Acoperim Constanța, Mamaia, Năvodari, Agigea, A2/A4, Ovidiu, Eforie, Techirghiol și Mangalia. Vezi harta de acoperire și timpii de sosire.",
       },
-      { property: "og:title", content: "Zone deservite — Vulcanizare Autorun" },
+      { property: "og:title", content: "Zone deservite — Vulcanizare Dragodana" },
       {
         property: "og:description",
         content: "Hartă de acoperire cu timpi estimați de sosire în Constanța și pe litoral.",

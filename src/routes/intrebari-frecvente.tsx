@@ -7,13 +7,13 @@ export const Route = createFileRoute("/intrebari-frecvente")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "Întrebări frecvente — Vulcanizare Autorun" },
+      { title: "Întrebări frecvente — Vulcanizare Dragodana" },
       {
         name: "description",
         content:
           "Prețuri, timpi de sosire, servicii pe loc, plata cu cardul și intervenții pentru camioane — răspunsuri clare despre vulcanizarea mobilă în Constanța.",
       },
-      { property: "og:title", content: "Întrebări frecvente — Vulcanizare Autorun" },
+      { property: "og:title", content: "Întrebări frecvente — Vulcanizare Dragodana" },
       {
         property: "og:description",
         content: "Tot ce vrei să știi înainte să suni: prețuri, timpi de sosire și servicii disponibile.",
