@@ -810,3 +810,5 @@
 .vm-kenburns { animation: vm-kenburns 22s ease-in-out infinite alternate; }
 .vm-tread { background: repeating-linear-gradient(135deg, var(--background) 0 10px, transparent 10px 22px), repeating-linear-gradient(45deg, var(--background) 0 10px, transparent 10px 22px); mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent); }
 @media (prefers-reduced-motion: reduce) { .vm-kenburns, .vm-marquee, .vm-shine::after { animation: none; } }
+@keyframes vm-spin { to { transform: rotate(360deg); } }
+.vm-spin { animation: vm-spin 40s linear infinite; }
