@@ -213,39 +213,6 @@ export function ServicesSection() {
           </div>
         )}
 
-        {/* Process */}
-        <div className="mt-14 rounded-[28px] border border-border bg-card p-6 sm:p-9">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand">Cum lucrăm</p>
-          <h3 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl">De la telefon la drum, în 4 pași.</h3>
-          <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((st, i) => (
-              <li key={st.title} className="relative">
-                <div className="flex items-center gap-3">
-                  <span className="flex size-11 items-center justify-center rounded-2xl bg-brand text-brand-foreground">
-                    <st.icon className="size-5" />
-                  </span>
-                  <span className="text-xs font-black text-muted-foreground">PAS {i + 1}</span>
-                </div>
-                <p className="mt-4 font-bold">{st.title}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{st.text}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-6 flex flex-col items-start justify-between gap-5 rounded-[28px] bg-foreground p-7 text-background sm:flex-row sm:items-center sm:p-9">
-          <div>
-            <p className="text-2xl font-black tracking-tight sm:text-3xl">Ai o pană chiar acum?</p>
-            <p className="mt-1 text-sm opacity-75">Suntem deschiși non-stop. Sună și îți spunem imediat cât durează.</p>
-          </div>
-          <a
-            href={`tel:${TEL}`}
-            className="vm-callfx inline-flex items-center gap-2 whitespace-nowrap rounded-xl bg-brand px-6 py-4 text-base font-black text-brand-foreground shadow-card transition-transform hover:-translate-y-0.5"
-          >
-            <Phone className="size-5" /> <span className="tabular-nums">{PHONE}</span>
-          </a>
-        </div>
       </div>
     </section>
   );
