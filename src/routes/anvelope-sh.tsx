@@ -4,7 +4,6 @@ import {
   ArrowRight,
   BadgeCheck,
   Car,
-  Check,
   ChevronDown,
   Clock,
   MapPin,
@@ -459,9 +458,6 @@ function AnvelopeSH() {
         </div>
       )}
 
-      <div className="hidden">
-        <Check />
-      </div>
     </main>
   );
 }
