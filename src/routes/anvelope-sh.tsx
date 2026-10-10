@@ -94,6 +94,7 @@ function AnvelopeSH() {
   const [qty, setQty] = useState(4);
   const [cat, setCat] = useState("auto");
   const [open, setOpen] = useState<number | null>(0);
+  const [showAll, setShowAll] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const waBase = WA.split("?")[0];
@@ -366,18 +367,48 @@ function AnvelopeSH() {
             <MapPin className="size-4" /> {ADDRESS}
           </a>
         </div>
-        <div className="-mx-5 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:auto-rows-[220px] md:grid-cols-4 md:overflow-visible md:p-0">
-          {photos.map((p, i) => (
-            <button
-              key={p.alt}
-              type="button"
-              onClick={() => setLightbox(i)}
-              className={`group relative aspect-[4/5] w-[70%] shrink-0 snap-center overflow-hidden rounded-3xl md:aspect-auto md:w-auto ${["md:col-span-2 md:row-span-2", "", "", "", "", "md:col-span-2", "md:col-span-2", "md:col-span-2", "md:col-span-2"][i]}`}
-            >
-              <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            </button>
-          ))}
+        <div className="-mx-5 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:auto-rows-[200px] md:grid-cols-4 md:overflow-visible md:p-0">
+          {photos.map((p, i) => {
+            const hidden = !showAll && i >= 5;
+            const more = !showAll && i === 4 && photos.length > 5;
+            return (
+              <button
+                key={p.alt}
+                type="button"
+                onClick={() => (more ? setShowAll(true) : setLightbox(i))}
+                className={`group relative aspect-[4/5] w-[70%] shrink-0 snap-center overflow-hidden rounded-3xl md:aspect-auto md:w-auto ${hidden ? "md:hidden" : ""} ${["md:col-span-2 md:row-span-2", "", "", "", "", "md:col-span-2", "md:col-span-2", "md:col-span-2", "md:col-span-2"][i]}`}
+              >
+                <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                {more && (
+                  <span className="absolute inset-0 hidden flex-col items-center justify-center gap-1 bg-foreground/65 text-background backdrop-blur-[2px] transition-colors group-hover:bg-brand/85 md:flex">
+                    <span className="text-4xl font-black">+{photos.length - 5}</span>
+                    <span className="text-xs font-bold uppercase tracking-widest">poze</span>
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </div>
+        {photos.length > 5 && (
+          <div className="mt-8 hidden justify-center md:flex">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              className="group inline-flex items-center gap-4 rounded-full border border-border bg-card py-2 pl-2 pr-6 font-bold shadow-card transition-all hover:-translate-y-0.5 hover:border-brand hover:shadow-glow"
+            >
+              <span className="flex -space-x-3">
+                {photos.slice(5, 8).map((p) => (
+                  <img key={p.alt} src={p.src} alt="" className="size-10 rounded-full object-cover ring-2 ring-card" />
+                ))}
+              </span>
+              <span>{showAll ? "Arată mai puține" : `Vezi toată galeria · ${photos.length} poze`}</span>
+              <span className="grid size-8 place-items-center rounded-full bg-brand text-brand-foreground">
+                <ChevronDown className={`size-4 transition-transform duration-300 ${showAll ? "rotate-180" : "group-hover:translate-y-0.5"}`} />
+              </span>
+            </button>
+          </div>
+        )}
       </section>
 
       {/* FAQ */}
