@@ -96,32 +96,48 @@ function Index() {
               </p>
 
               <div className="mt-5 grid gap-2.5 sm:mt-8 sm:flex sm:flex-wrap sm:gap-3">
-                <Btn href={`tel:${TEL}`} className="vm-callfx vm-callcta min-h-14 w-full text-base font-bold shadow-glow sm:min-h-0 sm:w-auto sm:text-sm">
-                  <Phone className="size-5 sm:size-4" /> <span className="tabular-nums">{PHONE}</span>
+                <Btn href={`tel:${TEL}`} className="vm-callfx vm-callcta vm-shine group min-h-14 w-full text-base font-bold shadow-glow transition-transform hover:-translate-y-0.5 sm:min-h-0 sm:w-auto sm:text-sm">
+                  <span className="relative flex size-6 items-center justify-center rounded-full bg-brand-foreground/20">
+                    <Phone className="size-3.5 transition-transform group-hover:rotate-12" />
+                  </span>
+                  <span className="tabular-nums">{PHONE}</span>
                 </Btn>
                 <div className="grid grid-cols-2 gap-2.5 sm:contents">
-                  <Btn href={WA} variant="ghost" className="min-h-13 px-3 sm:min-h-0 sm:px-5">
-                    <MessageCircle className="size-4" /> Locația
+                  <Btn href={WA} variant="ghost" className="group min-h-13 px-3 transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-card sm:min-h-0 sm:px-5">
+                    <MessageCircle className="size-4 text-brand transition-transform group-hover:scale-110" /> Locația
                   </Btn>
-                  <BtnLink to="/contact" variant="ghost" className="min-h-13 px-3 sm:min-h-0 sm:px-5">
-                    Cere ofertă
+                  <BtnLink to="/contact" variant="ghost" className="group min-h-13 px-3 transition-all hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-card sm:min-h-0 sm:px-5">
+                    Cere ofertă <span className="transition-transform group-hover:translate-x-1">→</span>
                   </BtnLink>
                 </div>
               </div>
 
               <dl className="mt-5 grid max-w-xl grid-cols-3 gap-2 sm:mt-10 sm:gap-3">
                 {[
-                  { icon: Clock, k: "24/24", v: "deschis non-stop" },
+                  { icon: Clock, k: "24/24", v: "deschis non-stop", live: true },
                   { icon: MapPin, k: "100 km", v: "rază acoperire" },
                   { icon: ShieldCheck, k: "7 din 7", v: "inclusiv sărbători" },
-                ].map((s) => (
+                ].map((s, i) => (
                   <div
                     key={s.k}
-                    className="rounded-2xl border border-border bg-card/70 p-3 backdrop-blur transition-all hover:-translate-y-0.5 hover:shadow-card sm:p-4"
+                    style={{ animationDelay: `${i * 120}ms` }}
+                    className="vm-stat group animate-rise rounded-2xl border border-border bg-card/80 p-3 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-float sm:p-4"
                   >
-                    <s.icon className="size-4 text-brand" />
-                    <dt className="mt-2.5 text-sm font-extrabold leading-none sm:text-base">{s.k}</dt>
-                    <dd className="mt-1.5 text-[11px] leading-snug text-muted-foreground sm:text-xs">{s.v}</dd>
+                    <div aria-hidden className="pointer-events-none absolute -right-8 -top-8 size-20 rounded-full bg-brand/10 blur-xl transition-all duration-500 group-hover:scale-150 group-hover:bg-brand/20" />
+                    <div className="relative flex items-center justify-between">
+                      <span className="flex size-8 items-center justify-center rounded-xl bg-brand-soft text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-brand-foreground group-hover:rotate-6">
+                        <s.icon className="size-4" />
+                      </span>
+                      {s.live && (
+                        <span className="relative flex size-2">
+                          <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-70" />
+                          <span className="relative inline-flex size-2 rounded-full bg-success" />
+                        </span>
+                      )}
+                    </div>
+                    <dt className="relative mt-3 text-base font-black leading-none tracking-tight sm:text-xl">{s.k}</dt>
+                    <dd className="relative mt-1.5 text-[11px] leading-snug text-muted-foreground sm:text-xs">{s.v}</dd>
+                    <span aria-hidden className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-brand transition-transform duration-500 group-hover:scale-x-100" />
                   </div>
                 ))}
               </dl>
