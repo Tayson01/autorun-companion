@@ -49,7 +49,7 @@ const reviews = [
   { name: "Nicolae Balasa", avatar: a2, rating: 5, when: "acum 3 luni", text: "Super preturi...calitate buna!!!", url: "https://www.google.com/maps/contrib/104743814083269855919/reviews" },
   { name: "Georgiana Alexandra Viloaica", avatar: a3, rating: 5, when: "acum 5 luni", text: "Profesioniști!\nRăspund rapid și rezolvă problema imediat!", url: "https://www.google.com/maps/contrib/102515383428966307254/reviews" },
   { name: "A A", avatar: a4, rating: 5, when: "acum 3 ani", text: "Niște băieți de nota 10 lucrează ft rapid și calitativ", url: "https://www.google.com/maps/contrib/108273886275660952522/reviews" },
-  { name: "cristian enache", avatar: a5, rating: 3, when: "acum 11 luni", text: "Un singur om lucra la 4 mașini", url: "https://www.google.com/maps/contrib/108309229763994807963/reviews" },
+  { name: "Daniel Manolache", avatar: a5, rating: 5, when: "acum 6 ani", text: "The Best....", url: "https://www.google.com/maps/contrib/109551062216076336482/reviews" },
 ];
 
 function Stars({ value, className = "size-4" }: { value: number; className?: string }) {
