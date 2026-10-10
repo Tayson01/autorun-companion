@@ -73,9 +73,13 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t border-border">
-          <p className="mx-auto max-w-6xl px-5 py-6 text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Vulcanizare Dragodana. Toate drepturile rezervate.
-          </p>
+          <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} VULCANIZARE DRAGODANA SRL. Toate drepturile rezervate.</p>
+            <p className="flex flex-wrap gap-x-4 gap-y-1">
+              <span><span className="font-semibold text-foreground">CUI:</span> {COMPANY.cui}</span>
+              <span><span className="font-semibold text-foreground">Nr. Reg. Com.:</span> {COMPANY.regCom}</span>
+            </p>
+          </div>
         </div>
       </footer>
 
